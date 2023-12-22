@@ -24,7 +24,7 @@
 	"require": {
 		"php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
 		"oliverklee/feuserextrafields": "^6.7.1 || ^7.0",
-		"oliverklee/oelib": "^6.3",
+		"oliverklee/oelib": "dev-main",
 		"psr/http-message": "^1.0.1 || ^2.0",
 		"symfony/dependency-injection": "^6.4 || ^7.4",
 		"typo3/cms-core": "^12.4.41",
