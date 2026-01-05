@@ -9,5 +9,5 @@
                project-issues="https://github.com/oliverklee/ext-onetimeaccount/issues" edit-on-github-branch="main"
                edit-on-github="oliverklee/ext-onetimeaccount" typo3-core-preferred="stable"
                interlink-shortcode="oliverklee/onetimeaccount"/>
-    <project title="onetimeaccount" release="7.2.0" version="7.2" copyright="2025"/>
+    <project title="onetimeaccount" release="7.2.0" version="7.2" copyright="2026"/>
 </guides>
