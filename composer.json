@@ -18,8 +18,8 @@
 	],
 	"homepage": "https://www.oliverklee.de/typo3-services/typo3-extensions/",
 	"support": {
-		"issues": "https://github.com/oliverklee-de/ext-onetimeaccount/issues",
-		"source": "https://github.com/oliverklee-de/ext-onetimeaccount"
+		"issues": "https://github.com/oliverklee-de/onetimeaccount/issues",
+		"source": "https://github.com/oliverklee-de/onetimeaccount"
 	},
 	"require": {
 		"php": "^7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
