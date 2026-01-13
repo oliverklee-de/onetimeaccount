@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" target-language="fr">
+    <header/>
+    <body>
+      <trans-unit id="plugin.withoutAutologin">
+        <source>One-time FE account creator without autologin</source>
+        <target state="needs-translation">One-time FE account creator without autologin</target>
+      </trans-unit>
+      <trans-unit id="plugin.fieldsToShow" approved="yes">
+        <source>FE user fields in the form</source>
+        <target state="final">Champs d'utilisateurs FE dans le formulaire</target>
+      </trans-unit>
+      <trans-unit id="plugin.requiredFields">
+        <source>Required fields</source>
+        <target state="needs-translation">Required fields</target>
+      </trans-unit>
+      <trans-unit id="plugin.systemFolderForNewUsers" approved="yes">
+        <source>Folder for the new FE user records</source>
+        <target state="final">Répertoire pour le stockage des nouveaux utilisateurs FE</target>
+      </trans-unit>
+      <trans-unit id="plugin.groupsForNewUsers" approved="yes">
+        <source>Groups for the new FE users</source>
+        <target state="final">Groupes des nouveaux utilisateurs FE</target>
+      </trans-unit>
+      <trans-unit id="plugin.captcha">
+        <source>Protect the form against spam with a CAPTCHA</source>
+        <target state="needs-translation">Protect the form against spam with a CAPTCHA</target>
+      </trans-unit>
+      <trans-unit id="plugin.termsAndConditionsPage">
+        <source>Page with the terms &amp; conditions</source>
+        <target state="needs-translation">Page with the terms &amp; conditions</target>
+      </trans-unit>
+      <trans-unit id="userDataLegend">
+        <source>Your personal data</source>
+        <target state="needs-translation">Your personal data</target>
+      </trans-unit>
+      <trans-unit id="company" approved="yes">
+        <source>Company</source>
+        <target state="final">Société</target>
+      </trans-unit>
+      <trans-unit id="department">
+        <source>Department</source>
+        <target state="needs-translation">Department</target>
+      </trans-unit>
+      <trans-unit id="vatIn">
+        <source>VAT identification number</source>
+        <target state="needs-translation">VAT identification number</target>
+      </trans-unit>
+      <trans-unit id="gender" approved="yes">
+        <source>Gender</source>
+        <target state="final">Genre</target>
+      </trans-unit>
+      <trans-unit id="gender.99">
+        <source>(none provided)</source>
+        <target state="needs-translation">(none provided)</target>
+      </trans-unit>
+      <trans-unit id="gender.0" approved="yes">
+        <source>Mr.</source>
+        <target state="final">Monsieur</target>
+      </trans-unit>
+      <trans-unit id="gender.1" approved="yes">
+        <source>Mrs.</source>
+        <target state="final">Madame</target>
+      </trans-unit>
+      <trans-unit id="gender.2">
+        <source>diverse</source>
+        <target state="needs-translation">diverse</target>
+      </trans-unit>
+      <trans-unit id="fullSalutation">
+        <source>Salutation and name</source>
+        <target state="needs-translation">Salutation and name</target>
+      </trans-unit>
+      <trans-unit id="title">
+        <source>Title</source>
+        <target state="needs-translation">Title</target>
+      </trans-unit>
+      <trans-unit id="name" approved="yes">
+        <source>Full name</source>
+        <target state="final">Nom et prénom</target>
+      </trans-unit>
+      <trans-unit id="firstName" approved="yes">
+        <source>First name</source>
+        <target state="final">Prénom</target>
+      </trans-unit>
+      <trans-unit id="lastName" approved="yes">
+        <source>Last name</source>
+        <target state="final">Nom de famille</target>
+      </trans-unit>
+      <trans-unit id="address" approved="yes">
+        <source>Street</source>
+        <target state="final">Rue</target>
+      </trans-unit>
+      <trans-unit id="zip" approved="yes">
+        <source>ZIP</source>
+        <target state="final">Code postal</target>
+      </trans-unit>
+      <trans-unit id="city" approved="yes">
+        <source>City</source>
+        <target state="final">Ville</target>
+      </trans-unit>
+      <trans-unit id="zone" approved="yes">
+        <source>County/Region</source>
+        <target state="final">Canton/province</target>
+      </trans-unit>
+      <trans-unit id="country" approved="yes">
+        <source>Country</source>
+        <target state="final">Pays</target>
+      </trans-unit>
+      <trans-unit id="email" approved="yes">
+        <source>Email</source>
+        <target state="final">Adresse mail</target>
+      </trans-unit>
+      <trans-unit id="www" approved="yes">
+        <source>Website</source>
+        <target state="final">Site web</target>
+      </trans-unit>
+      <trans-unit id="telephone" approved="yes">
+        <source>Phone number</source>
+        <target state="final">Numéro de téléphone</target>
+      </trans-unit>
+      <trans-unit id="dateOfBirth" approved="yes">
+        <source>Date of birth</source>
+        <target state="final">Date de naissance</target>
+      </trans-unit>
+      <trans-unit id="status" approved="yes">
+        <source>Job status</source>
+        <target state="final">Statut d'emploi</target>
+      </trans-unit>
+      <trans-unit id="status.1" approved="yes">
+        <source>student</source>
+        <target state="final">étudiant</target>
+      </trans-unit>
+      <trans-unit id="status.2" approved="yes">
+        <source>job seeking (full time)</source>
+        <target state="final">en recherche d'emploi (à plein temps)</target>
+      </trans-unit>
+      <trans-unit id="status.3" approved="yes">
+        <source>working</source>
+        <target state="final">employé</target>
+      </trans-unit>
+      <trans-unit id="status.4" approved="yes">
+        <source>retired</source>
+        <target state="final">retraité</target>
+      </trans-unit>
+      <trans-unit id="status.5" approved="yes">
+        <source>job seeking (part time)</source>
+        <target state="final">en recherche d'emploi (à temps partiel)</target>
+      </trans-unit>
+      <trans-unit id="userGroup" approved="yes">
+        <source>User group</source>
+        <target state="final">Groupe d'utilisateurs</target>
+      </trans-unit>
+      <trans-unit id="comments" approved="yes">
+        <source>Comments</source>
+        <target state="final">Commentaires</target>
+      </trans-unit>
+      <trans-unit id="termsAcknowledged">
+        <source>Terms &amp; conditions</source>
+        <target state="needs-translation">Terms &amp; conditions</target>
+      </trans-unit>
+      <trans-unit id="termsAcknowledgedLinkTitle">
+        <source>terms &amp; conditions</source>
+        <target state="needs-translation">terms &amp; conditions</target>
+      </trans-unit>
+      <trans-unit id="consentToTermsAndConditions">
+        <source>I consent to the %1$s.</source>
+        <target state="needs-translation">I consent to the %1$s.</target>
+      </trans-unit>
+      <trans-unit id="privacy" approved="yes">
+        <source>Privacy policy agreement</source>
+        <target state="final">Consentement à la politique de confidentialité</target>
+      </trans-unit>
+      <trans-unit id="privacy.long">
+        <source>
+          I consent that the data I enter will be stored electronically.
+          You can withdraw your consent for the future via email at any time.
+        </source>
+        <target state="needs-translation">
+          I consent that the data I enter will be stored electronically.
+          You can withdraw your consent for the future via email at any time.
+        </target>
+      </trans-unit>
+      <trans-unit id="captcha.question">
+        <source>Are you human?</source>
+        <target state="needs-translation">Are you human?</target>
+      </trans-unit>
+      <trans-unit id="captcha.answer.yes">
+        <source>Yes, I am human.</source>
+        <target state="needs-translation">Yes, I am human.</target>
+      </trans-unit>
+      <trans-unit id="captcha.answer.no">
+        <source>No, I am not human.</source>
+        <target state="needs-translation">No, I am not human.</target>
+      </trans-unit>
+      <trans-unit id="captcha.validationError">
+        <source>Please confirm that you are human.</source>
+        <target state="needs-translation">Please confirm that you are human.</target>
+      </trans-unit>
+      <trans-unit id="saveAndContinue" approved="yes">
+        <source>Save and continue</source>
+        <target state="final">Sauvegarder et continuer</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedAndLoggedIn">
+        <source>The user has been created, and you now are logged in as the new user.</source>
+        <target state="needs-translation">The user has been created, and you now are logged in as the new user.</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedNotLoggedIn">
+        <source>
+          The user has been created, but the automatic login with the new user was not successful.
+        </source>
+        <target state="needs-translation">
+          The user has been created, but the automatic login with the new user was not successful.
+        </target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedWithoutLogin">
+        <source>The user has been created.</source>
+        <target state="needs-translation">The user has been created.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
