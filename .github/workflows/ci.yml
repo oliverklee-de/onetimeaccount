@@ -26,7 +26,7 @@ jobs:
       - name: Show the Composer configuration
         run: composer config --global --list
       - name: Run PHP lint
-        run: "composer ci:php:lint"
+        run: "composer check:php:lint"
     strategy:
       fail-fast: false
       matrix:
@@ -82,7 +82,7 @@ jobs:
       - name: Install Composer dependencies
         run: "composer update --no-progress"
       - name: Run command
-        run: "composer ci:${{ matrix.command }}"
+        run: "composer check:${{ matrix.command }}"
     strategy:
       fail-fast: false
       matrix:
@@ -139,7 +139,7 @@ jobs:
           composer update --no-ansi --no-interaction --no-progress --with-dependencies
           composer show
       - name: Run unit tests
-        run: "composer ci:tests:unit"
+        run: "composer check:tests:unit"
     strategy:
       fail-fast: false
       matrix:
@@ -235,7 +235,7 @@ jobs:
           export typo3DatabaseHost="$DB_HOST";
           export typo3DatabaseUsername="$DB_USER";
           export typo3DatabasePassword="$DB_PASSWORD";
-          composer ci:tests:functional
+          composer check:tests:functional
     strategy:
       fail-fast: false
       matrix:
