@@ -15,7 +15,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 - Make the label for "title" less ambiguous (#1110)
 - Require feuserextrafields >= 6.6.0 (#1109, #1112)
-- Require the latest TYPO3 12LTS security release (#1092)
+- Require the latest TYPO3 12LTS security release (#1092, #1170)
 
 ### Removed
 
