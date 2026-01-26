@@ -23,7 +23,7 @@
 	},
 	"require": {
 		"php": "^7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-		"oliverklee/feuserextrafields": "^6.6",
+		"oliverklee/feuserextrafields": "^6.7",
 		"oliverklee/oelib": "^6.0",
 		"psr/http-message": "^1.0.1 || ^2.0",
 		"typo3/cms-core": "^11.5.41 || ^12.4.41",
