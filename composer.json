@@ -50,6 +50,7 @@
 		"symfony/console": "5.4.47 || 6.4.25 || 7.3.3",
 		"symfony/translation": "5.4.45 || 6.4.24 || 7.3.3",
 		"symfony/yaml": "5.4.45 || 6.4.25 || 7.3.3",
+		"typo3/cms-fluid-styled-content": "^11.5.41 || ^12.4.41",
 		"typo3/coding-standards": "0.6.1",
 		"typo3/testing-framework": "7.1.1",
 		"webmozart/assert": "^1.12.1"

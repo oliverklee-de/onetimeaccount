@@ -1,0 +1,17 @@
+"tt_content"
+,"uid","pid","CType","header","list_type","pi_flexform"
+,1,1,"list","Your data","onetimeaccount_withoutautologin","<?xml version=""1.0"" encoding=""utf-8"" standalone=""yes"" ?>
+                                                           <T3FlexForms>
+                                                               <data>
+                                                                   <sheet index="""">
+                                                                       <language index=""lDEF"">
+                                                                           <field index=""settings.fieldsToShow"">
+                                                                               <value index=""vDEF"">company,department,gender,fullSalutation,name,firstName,lastName,title,address,zip,city,zone,country,email,telephone,www,dateOfBirth,status,vatIn,comments,privacy,termsAcknowledged</value>
+                                                                           </field>
+                                                                           <field index=""settings.captcha"">
+                                                                               <value index=""vDEF"">1</value>
+                                                                           </field>
+                                                                       </language>
+                                                                   </sheet>
+                                                               </data>
+                                                           </T3FlexForms>"
