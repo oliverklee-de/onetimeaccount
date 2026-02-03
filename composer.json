@@ -40,7 +40,7 @@
 		"phpstan/phpstan": "1.12.28",
 		"phpstan/phpstan-phpunit": "1.4.2",
 		"phpstan/phpstan-strict-rules": "1.6.2",
-		"phpunit/phpunit": "9.6.25",
+		"phpunit/phpunit": "9.6.34",
 		"psr/log": "^1.0 || ^2.0 || ^3.0",
 		"rector/type-perfect": "1.0.0",
 		"saschaegerer/phpstan-typo3": "1.10.2 || 2.1.1",
