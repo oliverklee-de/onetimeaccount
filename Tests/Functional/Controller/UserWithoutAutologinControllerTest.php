@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace OliverKlee\Onetimeaccount\Tests\Functional\Controller;
 
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequestContext;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
@@ -61,7 +62,7 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
     /**
      * @return array<string, array{0: non-empty-string}>
      */
-    public static function nonDateFieldKeysDataProvider(): array
+    public static function nonDateInputFieldKeysDataProvider(): array
     {
         return [
             'company' => ['company'],
@@ -82,6 +83,15 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
             'status' => ['status'],
             'vatIn' => ['vatIn'],
             'comments' => ['comments'],
+        ];
+    }
+
+    /**
+     * @return array<string, array{0: non-empty-string}>
+     */
+    public static function checkboxFieldKeysDataProvider(): array
+    {
+        return [
             'privacy' => ['privacy'],
             'termsAcknowledged' => ['termsAcknowledged'],
         ];
@@ -92,7 +102,8 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
      *
      * @param non-empty-string $key
      *
-     * @dataProvider nonDateFieldKeysDataProvider
+     * @dataProvider nonDateInputFieldKeysDataProvider
+     * @dataProvider checkboxFieldKeysDataProvider
      */
     public function newActionHasAllNonDateFields(string $key): void
     {
@@ -107,7 +118,7 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
     /**
      * @return array<string, array{0: non-empty-string}>
      */
-    public static function dateFieldKeysDataProvider(): array
+    public static function dateFieldInputKeysDataProvider(): array
     {
         return [
             'dateOfBirth' => ['dateOfBirth'],
@@ -119,7 +130,7 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
      *
      * @param non-empty-string $key
      *
-     * @dataProvider dateFieldKeysDataProvider
+     * @dataProvider dateFieldInputKeysDataProvider
      */
     public function newActionHasAllDateFields(string $key): void
     {
@@ -133,6 +144,30 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
             'name="tx_onetimeaccount_withoutautologin[user][' . $key . '][dateFormat]"',
             $html
         );
+    }
+
+    /**
+     * Note: This test does not test the checkbox labels as those are interpolated with the link to the corresponding
+     * page before outputting, and hence cannot be tested using a simple `assertStringContainsString` with the raw
+     * label.
+     *
+     * @test
+     *
+     * @param non-empty-string $key
+     *
+     * @dataProvider nonDateInputFieldKeysDataProvider
+     * @dataProvider dateFieldInputKeysDataProvider
+     */
+    public function newActionHasLabelsForAllInputFields(string $key): void
+    {
+        $request = (new InternalRequest())->withPageId(self::PAGE_UID);
+        $context = (new InternalRequestContext())->withFrontendUserId(1);
+
+        $html = (string)$this->executeFrontendSubRequest($request, $context)->getBody();
+
+        $expected = LocalizationUtility::translate($key, 'onetimeaccount');
+        self::assertIsString($expected);
+        self::assertStringContainsString($expected, $html);
     }
 
     /**
