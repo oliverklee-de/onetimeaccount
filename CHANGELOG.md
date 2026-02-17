@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+- Add a membership number field (#1184)
 - Add a department field (#1111)
 
 ### Deprecated

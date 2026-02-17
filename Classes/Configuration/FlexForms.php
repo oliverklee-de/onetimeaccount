@@ -26,6 +26,7 @@ class FlexForms
         'email',
         'telephone',
         'www',
+        'membershipNumber',
         'dateOfBirth',
         'status',
         'vatIn',
