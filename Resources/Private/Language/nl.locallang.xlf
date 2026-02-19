@@ -123,6 +123,10 @@
         <source>Date of birth</source>
         <target state="final">Geboortedatum</target>
       </trans-unit>
+      <trans-unit id="membershipNumber">
+        <source>Membership number</source>
+        <target state="needs-translation">Membership number</target>
+      </trans-unit>
       <trans-unit id="status" approved="yes">
         <source>Job status</source>
         <target state="final">Arbeidsstatus</target>
