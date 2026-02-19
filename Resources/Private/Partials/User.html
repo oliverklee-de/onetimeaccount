@@ -236,6 +236,19 @@
                 </div>
             </oelib:isFieldEnabled>
 
+            <oelib:isFieldEnabled fieldName="membershipNumber">
+                <div class="row mb-3">
+                    <label for="onetimeaccount-membershipNumber" class="col-sm-2 col-form-label">
+                        <f:translate key="membershipNumber"/>
+                    </label>
+                    <div class="col-sm-10">
+                        <f:form.textfield property="membershipNumber" id="onetimeaccount-membershipNumber" maxlength="8"
+                                          class="form-control" errorClass="is-invalid"/>
+                        <f:render partial="ValidationResult" arguments="{property: 'membershipNumber'}"/>
+                    </div>
+                </div>
+            </oelib:isFieldEnabled>
+
             <oelib:isFieldEnabled fieldName="dateOfBirth">
                 <div class="row mb-3">
                     <label for="onetimeaccount-dateOfBirth" class="col-sm-2 col-form-label">

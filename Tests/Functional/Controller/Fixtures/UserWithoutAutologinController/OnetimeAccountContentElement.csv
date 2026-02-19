@@ -6,7 +6,7 @@
                                                                    <sheet index="""">
                                                                        <language index=""lDEF"">
                                                                            <field index=""settings.fieldsToShow"">
-                                                                               <value index=""vDEF"">company,department,gender,fullSalutation,name,firstName,lastName,title,address,zip,city,zone,country,email,telephone,www,dateOfBirth,status,vatIn,comments,privacy,termsAcknowledged</value>
+                                                                               <value index=""vDEF"">company,department,gender,fullSalutation,name,firstName,lastName,title,address,zip,city,zone,country,email,telephone,www,membershipNumber,dateOfBirth,status,vatIn,comments,privacy,termsAcknowledged</value>
                                                                            </field>
                                                                            <field index=""settings.captcha"">
                                                                                <value index=""vDEF"">1</value>

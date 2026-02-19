@@ -80,6 +80,7 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
             'email' => ['email'],
             'telephone' => ['telephone'],
             'www' => ['www'],
+            'membershipNumber' => ['membershipNumber'],
             'status' => ['status'],
             'vatIn' => ['vatIn'],
             'comments' => ['comments'],

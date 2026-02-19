@@ -45,6 +45,7 @@ final class FlexFormsTest extends UnitTestCase
             'email' => ['email'],
             'telephone' => ['telephone'],
             'www' => ['www'],
+            'membershipNumber' => ['membershipNumber'],
             'dateOfBirth' => ['dateOfBirth'],
             'status' => ['status'],
             'comments' => ['comments'],
