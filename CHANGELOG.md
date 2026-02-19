@@ -7,18 +7,26 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
+### Deprecated
+
+### Changed
+
+### Removed
+
+### Fixed
+
+## 7.3.0: Additional fields
+
+### Added
+
 - Add a membership number field (#1184)
 - Add a department field (#1111)
-
-### Deprecated
 
 ### Changed
 
 - Make the label for "title" less ambiguous (#1110)
 - Require feuserextrafields >= 6.7.0 (#1109, #1112, #1172)
 - Require the latest TYPO3 12LTS security release (#1092, #1170)
-
-### Removed
 
 ### Fixed
 
