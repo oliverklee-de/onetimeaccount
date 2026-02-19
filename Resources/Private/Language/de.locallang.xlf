@@ -123,9 +123,9 @@
         <source>Date of birth</source>
         <target state="final">Geburtsdatum</target>
       </trans-unit>
-      <trans-unit id="membershipNumber">
+      <trans-unit id="membershipNumber" approved="yes">
         <source>Membership number</source>
-        <target state="needs-translation">Membership number</target>
+        <target state="final">Mitgliedsnummer</target>
       </trans-unit>
       <trans-unit id="status" approved="yes">
         <source>Job status</source>
