@@ -119,6 +119,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->userValidatorMock = $this->createMock(UserValidator::class);
         $this->captchaValidatorMock = $this->createMock(CaptchaValidator::class);
         $this->captchaFactoryMock = $this->createMock(CaptchaFactory::class);
+        $contextMock = $this->createMock(Context::class);
+        $contextMock->method('getPropertyFromAspect')->with('date', 'iso')->willReturn(self::NOW);
 
         // We need to create an accessible mock in order to be able to set the protected `view`.
         $this->subject = $this->getAccessibleMock(
@@ -131,12 +133,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
                 $this->userValidatorMock,
                 $this->captchaValidatorMock,
                 $this->captchaFactoryMock,
+                $contextMock,
             ]
         );
-
-        $contextMock = $this->createMock(Context::class);
-        $contextMock->method('getPropertyFromAspect')->with('date', 'iso')->willReturn(self::NOW);
-        GeneralUtility::setSingletonInstance(Context::class, $contextMock);
 
         $this->viewMock = $this->createMock(TemplateView::class);
         $this->subject->_set('view', $this->viewMock);

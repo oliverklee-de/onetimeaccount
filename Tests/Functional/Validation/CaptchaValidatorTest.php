@@ -38,10 +38,9 @@ final class CaptchaValidatorTest extends FunctionalTestCase
 
         $GLOBALS['LANG'] = $this->get(LanguageServiceFactory::class)->create('default');
 
-        $this->subject = new CaptchaValidator();
+        $this->captchaFactory = $this->get(CaptchaFactory::class);
 
-        $this->captchaFactory = new CaptchaFactory();
-        $this->subject->injectCaptchaFactory($this->captchaFactory);
+        $this->subject = $this->get(CaptchaValidator::class);
     }
 
     private static function assertCaptchaValidationError(Result $result): void
