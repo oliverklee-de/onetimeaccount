@@ -144,7 +144,7 @@
 			"phpunit -c Build/phpunit/UnitTests.xml Tests/Unit"
 		],
 		"check:ts:lint": "typoscript-lint -c Configuration/TsLint.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript",
-		"check:xliff:lint": "php Build/bin/xliff-lint lint:xliff Resources/Private/Language",
+		"check:xliff:lint": "php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language",
 		"check:yaml:lint": "find . ! -path '*.Build/*' -name '*.yml' | xargs -r php ./.Build/vendor/bin/yaml-lint",
 		"coverage:create-directories": "mkdir -p build/logs .Build/coverage",
 		"fix": [
