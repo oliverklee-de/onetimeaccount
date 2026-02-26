@@ -36,7 +36,7 @@ final class CaptchaFactoryTest extends UnitTestCase
 
         $this->context = GeneralUtility::makeInstance(Context::class);
 
-        $this->subject = new CaptchaFactory();
+        $this->subject = new CaptchaFactory($this->context);
     }
 
     protected function tearDown(): void

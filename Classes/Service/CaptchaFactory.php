@@ -18,6 +18,13 @@ class CaptchaFactory implements SingletonInterface
     private const ADDITIONAL_SECRET = 'onetimeaccount-captcha';
     private const DATE_FORMAT = 'Y-m-d H:i:s';
 
+    private Context $context;
+
+    public function __construct(Context $context)
+    {
+        $this->context = $context;
+    }
+
     /**
      * Creates a new Captcha instance that is valid for exactly 5 minutes.
      */
@@ -25,7 +32,7 @@ class CaptchaFactory implements SingletonInterface
     {
         $captcha = GeneralUtility::makeInstance(Captcha::class);
 
-        $nowAsUnixTimestamp = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'timestamp');
+        $nowAsUnixTimestamp = $this->context->getPropertyFromAspect('date', 'timestamp');
         $validUntil = new \DateTime();
         $validUntil->setTimestamp($nowAsUnixTimestamp + 5 * Time::SECONDS_PER_MINUTE);
         $captcha->setValidUntil($validUntil);

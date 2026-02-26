@@ -6,6 +6,7 @@ namespace OliverKlee\Onetimeaccount\Tests\Unit\Validation;
 
 use OliverKlee\Onetimeaccount\Service\CaptchaFactory;
 use OliverKlee\Onetimeaccount\Validation\CaptchaValidator;
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\ValidatorInterface;
@@ -22,9 +23,9 @@ final class CaptchaValidatorTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->subject = new CaptchaValidator();
+        $context = new Context();
 
-        $this->subject->injectCaptchaFactory(new CaptchaFactory());
+        $this->subject = new CaptchaValidator($context, new CaptchaFactory($context));
     }
 
     /**

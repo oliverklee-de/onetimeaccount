@@ -8,7 +8,6 @@ use OliverKlee\Onetimeaccount\Domain\Model\Captcha;
 use OliverKlee\Onetimeaccount\Service\CaptchaFactory;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Error as ValidationError;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
@@ -23,8 +22,11 @@ class CaptchaValidator extends AbstractValidator implements SingletonInterface
 
     private bool $enabled = false;
 
-    public function injectCaptchaFactory(CaptchaFactory $factory): void
+    private Context $context;
+
+    public function __construct(Context $context, CaptchaFactory $factory)
     {
+        $this->context = $context;
         $this->captchaFactory = $factory;
     }
 
@@ -59,7 +61,7 @@ class CaptchaValidator extends AbstractValidator implements SingletonInterface
             return;
         }
 
-        $now = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'full');
+        $now = $this->context->getPropertyFromAspect('date', 'full');
         if ($validUntil < $now) {
             $this->markAsInvalid();
             return;

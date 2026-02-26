@@ -38,13 +38,16 @@ class UserWithoutAutologinController extends ActionController
 
     private CaptchaFactory $captchaFactory;
 
+    private Context $context;
+
     public function __construct(
         FrontendUserRepository $userRepository,
         FrontendUserGroupRepository $userGroupRepository,
         CredentialsGenerator $credentialsGenerator,
         UserValidator $userValidator,
         CaptchaValidator $captchaValidator,
-        CaptchaFactory $captchaFactory
+        CaptchaFactory $captchaFactory,
+        Context $context
     ) {
         $this->userRepository = $userRepository;
         $this->userGroupRepository = $userGroupRepository;
@@ -52,6 +55,7 @@ class UserWithoutAutologinController extends ActionController
         $this->userValidator = $userValidator;
         $this->captchaValidator = $captchaValidator;
         $this->captchaFactory = $captchaFactory;
+        $this->context = $context;
     }
 
     /**
@@ -151,7 +155,7 @@ class UserWithoutAutologinController extends ActionController
 
         $this->enrichWithPid($user);
         $this->enrichWithGroup($user, $userGroupUid);
-        $nowAsString = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('date', 'iso');
+        $nowAsString = $this->context->getPropertyFromAspect('date', 'iso');
         \assert(\is_string($nowAsString));
         $now = new \DateTime($nowAsString);
         $user->setLastLogin($now);
