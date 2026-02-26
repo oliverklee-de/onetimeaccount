@@ -146,8 +146,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->userMock = $this->createMock(FrontendUserAuthentication::class);
         $this->requestMock = $this->createMock(Request::class);
         $this->requestMock->method('getAttribute')->with('frontend.user')->willReturn($this->userMock);
-        $this->requestMock->method('getParsedBody')->willReturnCallback(fn (): array => $this->postParameters);
-        $this->requestMock->method('getQueryParams')->willReturnCallback(fn (): array => $this->getParameters);
+        $this->requestMock->method('getParsedBody')->willReturnCallback(fn(): array => $this->postParameters);
+        $this->requestMock->method('getQueryParams')->willReturnCallback(fn(): array => $this->getParameters);
         $this->subject->_set('request', $this->requestMock);
 
         $responseStub = $this->createStub(HtmlResponse::class);
