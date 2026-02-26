@@ -6,6 +6,4 @@ namespace OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
 
-final class XclassFrontendUser extends FrontendUser
-{
-}
+final class XclassFrontendUser extends FrontendUser {}

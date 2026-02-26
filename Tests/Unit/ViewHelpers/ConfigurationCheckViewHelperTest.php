@@ -37,7 +37,7 @@ final class ConfigurationCheckViewHelperTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->renderChildrenClosure = static fn (): string => '';
+        $this->renderChildrenClosure = static fn(): string => '';
         $this->renderingContextMock = $this->createMock(RenderingContextInterface::class);
         $this->variableProviderMock = $this->createMock(VariableProviderInterface::class);
         $this->renderingContextMock->method('getVariableProvider')->willReturn($this->variableProviderMock);
