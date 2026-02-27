@@ -122,7 +122,7 @@
 		"check:php:lint": "find .*.php *.php Classes Configuration Tests -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
 		"check:php:rector": "rector --dry-run",
 		"check:php:sniff": "phpcs Classes Configuration Tests",
-		"check:php:stan": "phpstan --no-progress",
+		"check:php:stan": "phpstan --no-progress --configuration=Build/phpstan/phpstan.neon",
 		"check:static": [
 			"@check:composer:normalize",
 			"@check:php:cs-fixer",
@@ -160,7 +160,7 @@
 		"fix:php:cs-fixer": "php-cs-fixer fix --config .php-cs-fixer.php",
 		"fix:php:rector": "rector",
 		"fix:php:sniff": "phpcbf Classes Configuration Tests",
-		"phpstan:baseline": "phpstan  --generate-baseline=phpstan-baseline.neon --allow-empty-baseline",
+		"phpstan:baseline": "phpstan --generate-baseline=Build/phpstan/phpstan-baseline.neon --allow-empty-baseline --configuration=Build/phpstan/phpstan.neon",
 		"prepare-release": [
 			"rm -rf .Build",
 			"rm -rf .github",
@@ -174,8 +174,6 @@
 			"rm crowdin.yml",
 			"rm phive.xml",
 			"rm phpcs.xml",
-			"rm phpstan-baseline.neon",
-			"rm phpstan.neon",
 			"rm rector.php"
 		]
 	},
