@@ -118,7 +118,7 @@
 			"@coverage:create-directories",
 			"phpunit -c Build/phpunit/UnitTests.xml --whitelist Classes --coverage-php=.Build/coverage/unit.cov Tests/Unit"
 		],
-		"check:php:cs-fixer": "php-cs-fixer fix --config .php-cs-fixer.php -v --dry-run --diff",
+		"check:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php -v --dry-run --diff",
 		"check:php:lint": "find .*.php *.php Classes Configuration Tests -name '*.php' -print0 | xargs -r -0 -n 1 -P 4 php -l",
 		"check:php:rector": "rector --dry-run",
 		"check:php:sniff": "phpcs Classes Configuration Tests",
@@ -157,7 +157,7 @@
 			"@fix:php:cs-fixer",
 			"@fix:php:sniff"
 		],
-		"fix:php:cs-fixer": "php-cs-fixer fix --config .php-cs-fixer.php",
+		"fix:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php",
 		"fix:php:rector": "rector",
 		"fix:php:sniff": "phpcbf Classes Configuration Tests",
 		"phpstan:baseline": "phpstan --generate-baseline=Build/phpstan/phpstan-baseline.neon --allow-empty-baseline --configuration=Build/phpstan/phpstan.neon",
@@ -169,7 +169,6 @@
 			"rm .editorconfig",
 			"rm .gitattributes",
 			"rm .gitignore",
-			"rm .php-cs-fixer.php",
 			"rm Configuration/TsLint.yml",
 			"rm crowdin.yml",
 			"rm phive.xml",
