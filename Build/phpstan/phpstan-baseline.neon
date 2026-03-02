@@ -84,3 +84,8 @@ parameters:
 			message: "#^Cannot access offset 'encryptionKey' on mixed\\.$#"
 			count: 2
 			path: ../../Tests/Unit/Service/CaptchaFactoryTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$gender of method OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUser\\:\\:setGender\\(\\) expects 0\\|1\\|2\\|99, int\\<0, max\\> given\\.$#"
+			count: 1
+			path: ../../Tests/Unit/Validation/UserValidatorTest.php

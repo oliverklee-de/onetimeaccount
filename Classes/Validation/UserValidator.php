@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Validation;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
+use OliverKlee\FeUserExtraFields\Domain\Model\Gender;
 use OliverKlee\Oelib\Validation\AbstractConfigurationDependentValidator;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -48,7 +49,7 @@ class UserValidator extends AbstractConfigurationDependentValidator implements S
                 $result = $user->getFullSalutation() !== '';
                 break;
             case 'gender':
-                $result = $user->getGender() !== FrontendUser::GENDER_NOT_PROVIDED;
+                $result = $user->getGender() !== Gender::notProvided();
                 break;
             case 'dateOfBirth':
                 $result = $user->getDateOfBirth() instanceof \DateTimeInterface;

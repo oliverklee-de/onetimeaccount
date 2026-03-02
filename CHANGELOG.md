@@ -15,6 +15,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Avoid using deprecated feuserextrafields API (#1200)
+
 ## 7.3.0: Additional fields
 
 ### Added

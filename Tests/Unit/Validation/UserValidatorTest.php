@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Tests\Unit\Validation;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
+use OliverKlee\FeUserExtraFields\Domain\Model\Gender;
 use OliverKlee\Onetimeaccount\Validation\UserValidator;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
@@ -70,7 +71,7 @@ final class UserValidatorTest extends UnitTestCase
         $user->setPrivacy(true);
         $user->setTermsAcknowledged(true);
         $user->setFullSalutation('Yo Ben!');
-        $user->setGender(FrontendUser::GENDER_MALE);
+        $user->setGender(Gender::male());
         $user->setStatus(FrontendUser::STATUS_STUDENT);
         $user->setComments('Wonderful!');
         $user->setDateOfBirth(new \DateTime('now'));
