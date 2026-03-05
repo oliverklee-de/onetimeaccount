@@ -145,7 +145,7 @@
 			"@check:tests:create-directories",
 			"phpunit -c Build/phpunit/UnitTests.xml Tests/Unit"
 		],
-		"check:ts:lint": "typoscript-lint -c Configuration/TsLint.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript",
+		"check:ts:lint": "typoscript-lint -c Build/typoscript-lint/config.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript",
 		"check:xliff:lint": "php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language",
 		"check:yaml:lint": "find . ! -path '*.Build/*' -name '*.yml' | xargs -r php ./.Build/vendor/bin/yaml-lint",
 		"coverage:create-directories": "mkdir -p build/logs .Build/coverage",
@@ -171,7 +171,6 @@
 			"rm .editorconfig",
 			"rm .gitattributes",
 			"rm .gitignore",
-			"rm Configuration/TsLint.yml",
 			"rm crowdin.yml",
 			"rm phive.xml"
 		]
