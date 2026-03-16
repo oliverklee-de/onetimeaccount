@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Require feuserextrafields >= 6.7.1 (#1212)
+
 ### Removed
 
 ### Fixed
