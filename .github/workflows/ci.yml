@@ -176,9 +176,9 @@ jobs:
           - typo3-version: "^12.4"
             php-version: "8.3"
             composer-dependencies: highest
-#          - typo3-version: "^12.4"
-#            php-version: "8.4"
-#            composer-dependencies: lowest
+          #          - typo3-version: "^12.4"
+          #            php-version: "8.4"
+          #            composer-dependencies: lowest
           - typo3-version: "^12.4"
             php-version: "8.4"
             composer-dependencies: highest
@@ -266,9 +266,9 @@ jobs:
           - typo3-version: "^12.4"
             php-version: "8.3"
             composer-dependencies: highest
-#          - typo3-version: "^12.4"
-#            php-version: "8.4"
-#            composer-dependencies: lowest
+          #          - typo3-version: "^12.4"
+          #            php-version: "8.4"
+          #            composer-dependencies: lowest
           - typo3-version: "^12.4"
             php-version: "8.4"
             composer-dependencies: highest
