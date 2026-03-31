@@ -99,7 +99,7 @@ final class ConfigurationCheckViewHelperTest extends UnitTestCase
         $result = ConfigurationCheckViewHelper::renderStatic(
             [],
             $this->renderChildrenClosure,
-            $this->renderingContextMock
+            $this->renderingContextMock,
         );
 
         self::assertSame('', $result);
@@ -127,7 +127,7 @@ final class ConfigurationCheckViewHelperTest extends UnitTestCase
         $result = ConfigurationCheckViewHelper::renderStatic(
             [],
             $this->renderChildrenClosure,
-            $this->renderingContextMock
+            $this->renderingContextMock,
         );
 
         self::assertSame('This is a configuration check warning.', $result);
@@ -141,7 +141,8 @@ final class ConfigurationCheckViewHelperTest extends UnitTestCase
         $extensionKey = 'onetimeaccount';
         $extensionConfiguration = new DummyConfiguration(['enableConfigCheck' => true]);
         ConfigurationProxy::setInstance($extensionKey, $extensionConfiguration);
-        $this->variableProviderMock->method('get')->with('settings')
+        $this->variableProviderMock
+            ->method('get')->with('settings')
             ->willReturn(['fieldsToShow' => 'bar', 'requiredFields' => 'foo']);
 
         $adminUserMock = $this->createMock(BackendUserAuthentication::class);
@@ -151,7 +152,7 @@ final class ConfigurationCheckViewHelperTest extends UnitTestCase
         $result = ConfigurationCheckViewHelper::renderStatic(
             [],
             $this->renderChildrenClosure,
-            $this->renderingContextMock
+            $this->renderingContextMock,
         );
 
         self::assertStringContainsString('plugin.tx_onetimeaccount.settings.requiredFields', $result);

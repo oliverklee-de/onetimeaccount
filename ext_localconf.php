@@ -19,6 +19,6 @@ defined('TYPO3') or die('Access denied.');
         // non-cacheable actions
         [
             UserWithoutAutologinController::class => 'new, create',
-        ]
+        ],
     );
 })();

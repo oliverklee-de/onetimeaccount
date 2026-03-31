@@ -14,7 +14,7 @@ ExtensionUtility::registerPlugin(
     // plugin title, as visible in the drop-down in the BE
     'LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.withoutAutologin',
     // the icon visible in the drop-down in the BE
-    'EXT:onetimeaccount/Resources/Public/Icons/Extension.svg'
+    'EXT:onetimeaccount/Resources/Public/Icons/Extension.svg',
 );
 
 // This removes the default controls from the plugin.
@@ -26,5 +26,5 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['onetimea
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['onetimeaccount_withoutautologin'] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue(
     'onetimeaccount_withoutautologin',
-    'FILE:EXT:onetimeaccount/Configuration/FlexForms/Plugin.xml'
+    'FILE:EXT:onetimeaccount/Configuration/FlexForms/Plugin.xml',
 );

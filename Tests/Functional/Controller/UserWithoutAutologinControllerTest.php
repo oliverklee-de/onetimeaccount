@@ -143,7 +143,7 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
         self::assertStringContainsString('name="tx_onetimeaccount_withoutautologin[user][' . $key . '][date]"', $html);
         self::assertStringContainsString(
             'name="tx_onetimeaccount_withoutautologin[user][' . $key . '][dateFormat]"',
-            $html
+            $html,
         );
     }
 

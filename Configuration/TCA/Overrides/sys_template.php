@@ -7,5 +7,5 @@ defined('TYPO3') || die('Access denied.');
 ExtensionManagementUtility::addStaticFile(
     'onetimeaccount',
     'Configuration/TypoScript',
-    'Onetimeaccount'
+    'Onetimeaccount',
 );

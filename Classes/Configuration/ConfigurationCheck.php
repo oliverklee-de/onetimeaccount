@@ -22,7 +22,7 @@ class ConfigurationCheck extends AbstractConfigurationCheck
             'These values specify which fields are required.
             Those may only include fields that are configured to be show.
             If you mark non-shown fields as required, the user will not be able submit the form.',
-            $fieldsToShow
+            $fieldsToShow,
         );
     }
 }
