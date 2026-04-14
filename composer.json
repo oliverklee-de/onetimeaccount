@@ -86,11 +86,11 @@
 			"block-insecure": false,
 			"block-abandoned": false
 		},
+		"bin-dir": ".Build/bin",
 		"lock": false,
 		"preferred-install": {
 			"*": "dist"
 		},
-		"process-timeout": 1000,
 		"sort-packages": true,
 		"vendor-dir": ".Build/vendor"
 	},
@@ -111,7 +111,7 @@
 		],
 		"check:coverage:functional": [
 			"@coverage:create-directories",
-			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/vendor/bin/phpunit -c Build/phpunit/FunctionalTests.xml --whitelist Classes --coverage-php=\".Build/coverage/{}.cov\" {}';"
+			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --whitelist Classes --coverage-php=\".Build/coverage/{}.cov\" {}';"
 		],
 		"check:coverage:merge": [
 			"@coverage:create-directories",
@@ -140,7 +140,7 @@
 		"check:tests:create-directories": "mkdir -p .Build/public/typo3temp/var/tests",
 		"check:tests:functional": [
 			"@check:tests:create-directories",
-			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/vendor/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';"
+			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml {}';"
 		],
 		"check:tests:unit": [
 			"@check:tests:create-directories",
@@ -148,7 +148,7 @@
 		],
 		"check:ts:lint": "typoscript-lint -c Build/typoscript-lint/config.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript",
 		"check:xliff:lint": "php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language",
-		"check:yaml:lint": "find . ! -path '*.Build/*' -name '*.yml' | xargs -r php ./.Build/vendor/bin/yaml-lint",
+		"check:yaml:lint": "find . ! -path '*.Build/*' -name '*.yml' | xargs -r php ./.Build/bin/yaml-lint",
 		"coverage:create-directories": "mkdir -p build/logs .Build/coverage",
 		"fix": [
 			"@fix:composer",
