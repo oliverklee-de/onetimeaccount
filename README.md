@@ -1,6 +1,7 @@
 # "One time account" TYPO3 extension
 
 [![TYPO3 V12](https://img.shields.io/badge/TYPO3-12-orange.svg)](https://get.typo3.org/version/12)
+[![TYPO3 V13](https://img.shields.io/badge/TYPO3-13-orange.svg)](https://get.typo3.org/version/13)
 [![License](https://img.shields.io/github/license/oliverklee-de/ext-onetimeaccount)](https://packagist.org/packages/oliverklee/onetimeaccount)
 [![GitHub CI status](https://github.com/oliverklee-de/onetimeaccount/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/oliverklee-de/onetimeaccount/actions)
 [![Coverage Status](https://coveralls.io/repos/github/oliverklee-de/onetimeaccount/badge.svg?branch=main)](https://coveralls.io/github/oliverklee-de/onetimeaccount?branch=main)
