@@ -24,13 +24,13 @@
 	"require": {
 		"php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
 		"oliverklee/feuserextrafields": "^6.7.1 || ^7.0",
-		"oliverklee/oelib": "^6.3",
+		"oliverklee/oelib": "dev-main",
 		"psr/http-message": "^1.0.1 || ^2.0",
 		"symfony/dependency-injection": "^6.4 || ^7.4",
-		"typo3/cms-core": "^12.4.41",
-		"typo3/cms-extbase": "^12.4.41",
-		"typo3/cms-fluid": "^12.4.41",
-		"typo3/cms-frontend": "^12.4.41",
+		"typo3/cms-core": "^12.4.41 || ^13.4.31",
+		"typo3/cms-extbase": "^12.4.41 || ^13.4.31",
+		"typo3/cms-fluid": "^12.4.41 || ^13.4.31",
+		"typo3/cms-frontend": "^12.4.41 || ^13.4.31",
 		"typo3fluid/fluid": "^2.15.0 || ^4.6.1"
 	},
 	"require-dev": {
@@ -54,7 +54,7 @@
 		"symfony/console": "^6.4 || ^7.4",
 		"symfony/translation": "^6.4 || ^7.4",
 		"symfony/yaml": "^6.4 || ^7.4",
-		"typo3/cms-fluid-styled-content": "^12.4",
+		"typo3/cms-fluid-styled-content": "^12.4 || ^13.4",
 		"typo3/coding-standards": "0.8.0",
 		"typo3/testing-framework": "8.3.3"
 	},
