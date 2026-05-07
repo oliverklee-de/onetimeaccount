@@ -23,9 +23,6 @@ final class ConfigurationCheckViewHelperTest extends UnitTestCase
 {
     private \Closure $renderChildrenClosure;
 
-    /**
-     * @var RenderingContextInterface&MockObject
-     */
     private RenderingContextInterface $renderingContextMock;
 
     /**

@@ -93,9 +93,6 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     private FrontendUserAuthentication $userMock;
 
-    /**
-     * @var Request&MockObject
-     */
     private Request $requestMock;
 
     /**
