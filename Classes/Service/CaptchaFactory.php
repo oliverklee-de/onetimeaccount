@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Onetimeaccount\Service;
 
-use OliverKlee\Oelib\Interfaces\Time;
 use OliverKlee\Onetimeaccount\Domain\Model\Captcha;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -34,7 +33,7 @@ class CaptchaFactory implements SingletonInterface
 
         $nowAsUnixTimestamp = $this->context->getPropertyFromAspect('date', 'timestamp');
         $validUntil = new \DateTime();
-        $validUntil->setTimestamp($nowAsUnixTimestamp + 5 * Time::SECONDS_PER_MINUTE);
+        $validUntil->setTimestamp($nowAsUnixTimestamp + (5 * 60));
         $captcha->setValidUntil($validUntil);
 
         $this->fillCorrectAnswer($captcha);
