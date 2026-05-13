@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Avoid using the deprecated `Time` interface (#1243)
 - Avoid using deprecated feuserextrafields API (#1200)
 
 ## 7.3.0: Additional fields
