@@ -31,11 +31,6 @@ parameters:
 			path: ../../Tests/Functional/Validation/CaptchaValidatorTest.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertArrayHasKey\\(\\) with 0 and non\\-empty\\-list\\<non\\-empty\\-string\\> will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Configuration/ConfigurationCheckTest.php
-
-		-
 			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
