@@ -124,18 +124,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - typo3-version: "11.5"
-            php-version: "8.1"
-            composer-dependencies: Min
-          - typo3-version: "11.5"
-            php-version: "8.1"
-            composer-dependencies: Max
-          - typo3-version: "11.5"
-            php-version: "8.3"
-            composer-dependencies: Min
-          - typo3-version: "11.5"
-            php-version: "8.3"
-            composer-dependencies: Max
           - typo3-version: "12.4"
             php-version: "8.1"
             composer-dependencies: Min
@@ -181,30 +169,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - typo3-version: "11.5"
-            php-version: "8.1"
-            dbms: "sqlite"
-            composer-dependencies: Min
-          - typo3-version: "11.5"
-            php-version: "8.1"
-            dbms: "sqlite"
-            composer-dependencies: Max
-          - typo3-version: "11.5"
-            php-version: "8.3"
-            dbms: "sqlite"
-            composer-dependencies: Min
-          - typo3-version: "11.5"
-            php-version: "8.3"
-            dbms: "sqlite"
-            composer-dependencies: Max
-          - typo3-version: "11.5"
-            php-version: "8.3"
-            dbms: "mysql"
-            composer-dependencies: Max
-          - typo3-version: "11.5"
-            php-version: "8.3"
-            dbms: "postgres"
-            composer-dependencies: Max
           - typo3-version: "12.4"
             php-version: "8.1"
             dbms: "sqlite"
