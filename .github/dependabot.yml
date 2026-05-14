@@ -16,7 +16,7 @@ updates:
       - dependency-type: "development"
     ignore:
       - dependency-name: "phpunit/phpunit"
-        versions: [ ">= 9.0.0" ]
+        versions: [ ">= 10.0.0" ]
       - dependency-name: "psr/log"
       - dependency-name: "symfony/console"
       - dependency-name: "symfony/translation"

@@ -6,15 +6,15 @@ namespace OliverKlee\Onetimeaccount\Tests\Unit\Service;
 
 use OliverKlee\Onetimeaccount\Domain\Model\Captcha;
 use OliverKlee\Onetimeaccount\Service\CaptchaFactory;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Service\CaptchaFactory
- */
+#[CoversClass(CaptchaFactory::class)]
 final class CaptchaFactoryTest extends UnitTestCase
 {
     protected bool $resetSingletonInstances = true;
@@ -46,17 +46,13 @@ final class CaptchaFactoryTest extends UnitTestCase
         parent::tearDown();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isSingleton(): void
     {
         self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateChallengeGeneratesCaptcha(): void
     {
         $result = $this->subject->generateChallenge();
@@ -64,9 +60,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertInstanceOf(Captcha::class, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateChallengeSetsValidUntilExactlyFiveMinutesInTheFuture(): void
     {
         $now = new \DateTimeImmutable('now');
@@ -79,9 +73,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertSame($now->getTimestamp() + 60 * 5, $validUntil->getTimestamp());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateChallengeSetsCorrectAnswerToFortyCharacterHexString(): void
     {
         $this->context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
@@ -91,9 +83,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertMatchesRegularExpression('/^[\\da-f]{40}$/', $result->getCorrectAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateChallengeSetsCorrectAnswerAsHashFromFormattedValidUntilDateWithEncryptionKey(): void
     {
         $this->context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable('now')));
@@ -108,9 +98,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertSame($expectedAnswer, $result->getCorrectAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateChallengeSetsDecoyAnswerToFortyFourCharacterHexString(): void
     {
         $result = $this->subject->generateChallenge();
@@ -118,9 +106,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertMatchesRegularExpression('/^[\\da-f]{40}$/', $result->getDecoyAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function generateChallengeSetsDecoyAnswerDifferentFromCorrectAnswer(): void
     {
         $result = $this->subject->generateChallenge();
@@ -128,9 +114,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertNotSame($result->getCorrectAnswer(), $result->getDecoyAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fillCorrectAnswerForCaptchaWithoutValiUntilKeepsCorrectAnswerEmpty(): void
     {
         $captcha = new Captcha();
@@ -140,9 +124,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertSame('', $captcha->getCorrectAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fillCorrectAnswerForCaptchaWithValiUntilSetsCorrectAnswerToFortyCharactersHexString(): void
     {
         $captcha = new Captcha();
@@ -153,9 +135,7 @@ final class CaptchaFactoryTest extends UnitTestCase
         self::assertMatchesRegularExpression('/^[\\da-f]{40}$/', $captcha->getCorrectAnswer());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fillCorrectAnswerForCaptchaWithValiUntilSetsCorrectAnswerToHashOfValidUntilAndSecrets(): void
     {
         $captcha = new Captcha();

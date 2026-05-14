@@ -6,14 +6,15 @@ namespace OliverKlee\Onetimeaccount\Tests\Functional\Validation;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
 use OliverKlee\Onetimeaccount\Validation\UserValidator;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Validation\UserValidator
- */
+#[CoversClass(UserValidator::class)]
 final class UserValidatorTest extends FunctionalTestCase
 {
     private const VALIDATABLE_FIELDS = [
@@ -63,7 +64,7 @@ final class UserValidatorTest extends FunctionalTestCase
     /**
      * @return array<string, array{0: non-empty-string}>
      */
-    public function fieldDataProvider(): array
+    public static function fieldDataProvider(): array
     {
         $dataSets = [];
         foreach (self::VALIDATABLE_FIELDS as $field) {
@@ -74,12 +75,10 @@ final class UserValidatorTest extends FunctionalTestCase
     }
 
     /**
-     * @test
-     *
      * @param non-empty-string $field
-     *
-     * @dataProvider fieldDataProvider
      */
+    #[Test]
+    #[DataProvider('fieldDataProvider')]
     public function validateWithEmptyModelForSingleFieldRequiredAndShownAddsErrorForRequiredField(string $field): void
     {
         $this->subject->setSettings(['fieldsToShow' => $field, 'requiredFields' => $field]);
@@ -95,9 +94,7 @@ final class UserValidatorTest extends FunctionalTestCase
         self::assertSame($expected, $firstError->getMessage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateModelWithEmptyModelForAllFieldsRequiredAndVisibleReturnsErrors(): void
     {
         $concatenatedFields = \implode(',', self::VALIDATABLE_FIELDS);

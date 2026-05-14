@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace OliverKlee\Onetimeaccount\Tests\Functional\Controller;
 
+use OliverKlee\Onetimeaccount\Controller\UserWithoutAutologinController;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequest;
 use TYPO3\TestingFramework\Core\Functional\Framework\Frontend\InternalRequestContext;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Controller\UserWithoutAutologinController
- */
+#[CoversClass(UserWithoutAutologinController::class)]
 final class UserWithoutAutologinControllerTest extends FunctionalTestCase
 {
     private const FIXTURES_PATH = __DIR__ . '/Fixtures/UserWithoutAutologinController';
@@ -99,13 +101,11 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
     }
 
     /**
-     * @test
-     *
      * @param non-empty-string $key
-     *
-     * @dataProvider nonDateInputFieldKeysDataProvider
-     * @dataProvider checkboxFieldKeysDataProvider
      */
+    #[Test]
+    #[DataProvider('nonDateInputFieldKeysDataProvider')]
+    #[DataProvider('checkboxFieldKeysDataProvider')]
     public function newActionHasAllNonDateFields(string $key): void
     {
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
@@ -127,12 +127,10 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
     }
 
     /**
-     * @test
-     *
      * @param non-empty-string $key
-     *
-     * @dataProvider dateFieldInputKeysDataProvider
      */
+    #[Test]
+    #[DataProvider('dateFieldInputKeysDataProvider')]
     public function newActionHasAllDateFields(string $key): void
     {
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
@@ -152,13 +150,12 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
      * page before outputting, and hence cannot be tested using a simple `assertStringContainsString` with the raw
      * label.
      *
-     * @test
      *
      * @param non-empty-string $key
-     *
-     * @dataProvider nonDateInputFieldKeysDataProvider
-     * @dataProvider dateFieldInputKeysDataProvider
      */
+    #[Test]
+    #[DataProvider('nonDateInputFieldKeysDataProvider')]
+    #[DataProvider('dateFieldInputKeysDataProvider')]
     public function newActionHasLabelsForAllInputFields(string $key): void
     {
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);
@@ -171,9 +168,7 @@ final class UserWithoutAutologinControllerTest extends FunctionalTestCase
         self::assertStringContainsString($expected, $html);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionHasCaptcha(): void
     {
         $request = (new InternalRequest())->withPageId(self::PAGE_UID);

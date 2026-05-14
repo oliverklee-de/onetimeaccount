@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Tests\Unit\Configuration;
 
 use OliverKlee\Onetimeaccount\Configuration\FlexForms;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Configuration\FlexForms
- */
+#[CoversClass(FlexForms::class)]
 final class FlexFormsTest extends UnitTestCase
 {
     private const LOCALLANG_PREFIX = 'LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:';
@@ -26,7 +27,7 @@ final class FlexFormsTest extends UnitTestCase
     /**
      * @return array<non-empty-string, array<int, non-empty-string>>
      */
-    public function fieldKeysDataProvider(): array
+    public static function fieldKeysDataProvider(): array
     {
         return [
             'company' => ['company'],
@@ -56,12 +57,10 @@ final class FlexFormsTest extends UnitTestCase
     }
 
     /**
-     * @test
-     *
      * @param non-empty-string $fieldKey
-     *
-     * @dataProvider fieldKeysDataProvider
      */
+    #[Test]
+    #[DataProvider('fieldKeysDataProvider')]
     public function buildFieldsCreatesArrayWithLabelsAndFieldKeys(string $fieldKey): void
     {
         $configuration = [];
