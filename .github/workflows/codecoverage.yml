@@ -24,7 +24,7 @@ jobs:
           ini-file: development
           coverage: xdebug
           extensions: mysqli
-          tools: composer:v2, phive
+          tools: composer:v2
       - name: Show Composer version
         run: composer --version
       - name: Show the Composer configuration
@@ -51,8 +51,6 @@ jobs:
         run: |
           composer update --no-ansi --no-interaction --no-progress --with-dependencies
           composer show
-      - name: Install development tools
-        run: phive --no-progress install --trust-gpg-keys D8406D0D82947747293778314AA394086372C20A
       - name: Start MySQL
         run: "sudo /etc/init.d/mysql start"
       - name: Run unit tests with coverage
