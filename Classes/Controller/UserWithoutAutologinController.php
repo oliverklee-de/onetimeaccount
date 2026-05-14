@@ -27,13 +27,13 @@ use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 class UserWithoutAutologinController extends ActionController
 {
     public function __construct(
-        private FrontendUserRepository $userRepository,
-        private FrontendUserGroupRepository $userGroupRepository,
-        private CredentialsGenerator $credentialsGenerator,
-        private UserValidator $userValidator,
-        private CaptchaValidator $captchaValidator,
-        private CaptchaFactory $captchaFactory,
-        private Context $context
+        private readonly FrontendUserRepository $userRepository,
+        private readonly FrontendUserGroupRepository $userGroupRepository,
+        private readonly CredentialsGenerator $credentialsGenerator,
+        private readonly UserValidator $userValidator,
+        private readonly CaptchaValidator $captchaValidator,
+        private readonly CaptchaFactory $captchaFactory,
+        private readonly Context $context,
     ) {}
 
     /**
@@ -104,7 +104,7 @@ class UserWithoutAutologinController extends ActionController
     public function createAction(
         ?FrontendUser $user = null,
         ?int $userGroup = null,
-        ?Captcha $captcha = null
+        ?Captcha $captcha = null,
     ): ResponseInterface {
         if (!$user instanceof FrontendUser) {
             return $this->htmlResponse();

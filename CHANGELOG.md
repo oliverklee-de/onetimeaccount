@@ -11,7 +11,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
-- Use PHP 8.1 language features (#1264, #1265, #1266)
+- Use PHP 8.1 language features (#1264, #1265, #1266, #1268)
 
 ### Removed
 

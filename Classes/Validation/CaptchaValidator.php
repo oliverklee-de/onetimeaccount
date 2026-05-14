@@ -20,7 +20,7 @@ class CaptchaValidator extends AbstractValidator implements SingletonInterface
 
     private bool $enabled = false;
 
-    public function __construct(private Context $context, private CaptchaFactory $captchaFactory) {}
+    public function __construct(private readonly Context $context, private readonly CaptchaFactory $captchaFactory) {}
 
     /**
      * @param array<string, string> $settings
