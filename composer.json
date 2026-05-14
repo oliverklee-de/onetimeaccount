@@ -144,7 +144,7 @@
 		],
 		"check:typoscript:lint": "typoscript-lint -c ./Build/typoscript-lint/config.yml --ansi -n --fail-on-warnings -vvv Configuration/TypoScript Tests/Functional/Controller/Fixtures/TypoScript",
 		"check:xliff:lint": "php Build/Scripts/xliffLint.sh lint:xliff Resources/Private/Language",
-		"check:yaml:lint": "find . ! -path '*.Build/*' -name '*.yml' | xargs -r php ./.Build/bin/yaml-lint",
+		"check:yaml:lint": "find . ! -path '*.Build/*' \\( -name '*.yaml' -o -name '*.yml' \\) | xargs -r php ./.Build/bin/yaml-lint",
 		"coverage:create-directories": "mkdir -p build/logs .Build/coverage",
 		"fix": [
 			"@fix:composer:normalize",
