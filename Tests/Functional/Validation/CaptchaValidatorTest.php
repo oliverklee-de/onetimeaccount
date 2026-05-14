@@ -7,6 +7,8 @@ namespace OliverKlee\Onetimeaccount\Tests\Functional\Validation;
 use OliverKlee\Onetimeaccount\Domain\Model\Captcha;
 use OliverKlee\Onetimeaccount\Service\CaptchaFactory;
 use OliverKlee\Onetimeaccount\Validation\CaptchaValidator;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -15,9 +17,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Validation\CaptchaValidator
- */
+#[CoversClass(CaptchaValidator::class)]
 final class CaptchaValidatorTest extends FunctionalTestCase
 {
     protected array $testExtensionsToLoad = [
@@ -64,9 +64,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         return $dateTime;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithNullAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -76,9 +74,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertCaptchaValidationError($result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithNonCaptchaObjectAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -88,9 +84,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertCaptchaValidationError($result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithCaptchaWithoutValidUntilAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -100,9 +94,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertCaptchaValidationError($result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithFutureValidUntilAndEmptyAnswerAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -116,9 +108,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertCaptchaValidationError($result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithFutureValidUntilAndOtherGivenAnswerAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -132,9 +122,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertCaptchaValidationError($result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithFutureValidUntilAndGivenAnswerMatchingTheCorrectAnswerNotAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -153,9 +141,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithValidUntilRightNowAndGivenAnswerMatchingTheCorrectAnswerNotAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);
@@ -179,9 +165,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithPastValidUntilAndGivenAnswerMatchingTheCorrectAnswerAddsError(): void
     {
         $this->subject->setSettings(['captcha' => '1']);

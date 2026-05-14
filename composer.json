@@ -41,7 +41,7 @@
 		"phpstan/phpstan": "1.12.32",
 		"phpstan/phpstan-phpunit": "1.4.2",
 		"phpstan/phpstan-strict-rules": "1.6.2",
-		"phpunit/phpunit": "9.6.34",
+		"phpunit/phpunit": "10.5.63",
 		"psr/log": "^1.0 || ^2.0 || ^3.0",
 		"rector/type-perfect": "1.0.0",
 		"saschaegerer/phpstan-typo3": "1.10.2",
@@ -108,7 +108,7 @@
 		],
 		"check:coverage:functional": [
 			"@coverage:create-directories",
-			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --whitelist Classes --coverage-php=\".Build/coverage/{}.cov\" {}';"
+			"find 'Tests/Functional' -wholename '*Test.php' | parallel --gnu 'echo; echo \"Running functional test suite {}\"; .Build/bin/phpunit -c Build/phpunit/FunctionalTests.xml --coverage-php=\".Build/coverage/{}.cov\" {}';"
 		],
 		"check:coverage:merge": [
 			"@coverage:create-directories",
@@ -116,7 +116,7 @@
 		],
 		"check:coverage:unit": [
 			"@coverage:create-directories",
-			"phpunit -c Build/phpunit/UnitTests.xml --whitelist Classes --coverage-php=.Build/coverage/unit.cov Tests/Unit"
+			"phpunit -c Build/phpunit/UnitTests.xml --coverage-php=.Build/coverage/unit.cov Tests/Unit"
 		],
 		"check:php:cs-fixer": "php-cs-fixer fix --config ./Build/php-cs-fixer/config.php -v --dry-run --diff",
 		"check:php:lint": "parallel-lint *.php Build Classes Configuration Tests",

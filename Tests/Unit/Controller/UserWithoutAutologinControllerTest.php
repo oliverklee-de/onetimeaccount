@@ -16,6 +16,9 @@ use OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult;
 use OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\XclassFrontendUser;
 use OliverKlee\Onetimeaccount\Validation\CaptchaValidator;
 use OliverKlee\Onetimeaccount\Validation\UserValidator;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\HtmlResponse;
@@ -34,9 +37,7 @@ use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\TestingFramework\Core\AccessibleObjectInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Controller\UserWithoutAutologinController
- */
+#[CoversClass(UserWithoutAutologinController::class)]
 final class UserWithoutAutologinControllerTest extends UnitTestCase
 {
     private const SITE_URL = 'https://www.example.com';
@@ -126,7 +127,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->requestMock->method('getQueryParams')->willReturnCallback(fn(): array => $this->getParameters);
         $this->subject->_set('request', $this->requestMock);
 
-        $responseStub = $this->createStub(HtmlResponse::class);
+        $responseStub = self::createStub(HtmlResponse::class);
         $this->subject->method('htmlResponse')->willReturn($responseStub);
     }
 
@@ -155,23 +156,19 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     private function mockRedirectToUri(string $uri): void
     {
-        $redirectResponse = $this->createStub(RedirectResponse::class);
+        $redirectResponse = self::createStub(RedirectResponse::class);
         $this->subject
             ->expects(self::once())->method('redirectToUri')->with($uri)
             ->willReturn($redirectResponse);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isActionController(): void
     {
         self::assertInstanceOf(ActionController::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionReturnsHtmlResponse(): void
     {
         $result = $this->subject->newAction();
@@ -179,9 +176,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(HtmlResponse::class, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithUserPassesUserToView(): void
     {
         $user = new FrontendUser();
@@ -191,9 +186,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($user, $this->dataAssignedToView['user']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithoutUserPassesVirginUserToView(): void
     {
         $this->subject->newAction();
@@ -201,9 +194,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(FrontendUser::class, $this->dataAssignedToView['user']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithNullUserPassesVirginUserToView(): void
     {
         $this->subject->newAction(null);
@@ -211,9 +202,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(FrontendUser::class, $this->dataAssignedToView['user']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithUserGroupPassesProvidedUserGroupUidToView(): void
     {
         $userGroupUid = 5;
@@ -223,9 +212,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($userGroupUid, $this->dataAssignedToView['selectedUserGroup']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithNullUserGroupPassesNullUserGroupToView(): void
     {
         $this->subject->newAction(null, null);
@@ -233,9 +220,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertNull($this->dataAssignedToView['selectedUserGroup']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithMissingUserGroupPassesNullUserGroupToView(): void
     {
         $this->subject->newAction(null);
@@ -243,9 +228,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertNull($this->dataAssignedToView['selectedUserGroup']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithoutUserCanPassVirginSubclassedUserToView(): void
     {
         // @phpstan-ignore-next-line We know that the necessary array keys exist.
@@ -256,15 +239,13 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(XclassFrontendUser::class, $this->dataAssignedToView['user']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionPassesConfiguredUserGroupsToView(): void
     {
         $groupUid1 = 1;
         $groupUid2 = 2;
         $this->subject->_set('settings', ['groupsForNewUsers' => $groupUid1 . ',' . $groupUid2]);
-        $userGroups = $this->createStub(QueryResultInterface::class);
+        $userGroups = self::createStub(QueryResultInterface::class);
         $this->userGroupRepositoryMock->method('findByUids')->with([$groupUid1, $groupUid2])->willReturn($userGroups);
 
         $this->subject->newAction();
@@ -272,9 +253,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($userGroups, $this->dataAssignedToView['userGroups']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithPassesNewCaptchaToView(): void
     {
         $this->subject->_set('settings', ['captcha' => '1']);
@@ -289,7 +268,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
     /**
      * @return array<string, array{0: ''|null}>
      */
-    public function emptyParameterDataProvider(): array
+    public static function emptyParameterDataProvider(): array
     {
         return [
             'empty string' => [''],
@@ -297,11 +276,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         ];
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider emptyParameterDataProvider
-     */
+    #[Test]
+    #[DataProvider('emptyParameterDataProvider')]
     public function newActionWithEmptyRedirectUrlInGetNotPassesRedirectUrlToView(?string $redirectUrl): void
     {
         $this->getParameters['redirect_url'] = $redirectUrl;
@@ -311,11 +287,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertArrayNotHasKey('redirectUrl', $this->dataAssignedToView);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider emptyParameterDataProvider
-     */
+    #[Test]
+    #[DataProvider('emptyParameterDataProvider')]
     public function newActionWithEmptyRedirectUrlInPostNotPassesRedirectUrlToView(?string $redirectUrl): void
     {
         $this->postParameters['redirect_url'] = $redirectUrl;
@@ -325,9 +298,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertArrayNotHasKey('redirectUrl', $this->dataAssignedToView);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithRedirectUrlInSiteInGetPassesRedirectUrlToView(): void
     {
         $redirectUrl = 'https://example.com/';
@@ -338,9 +309,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($redirectUrl, $this->dataAssignedToView['redirectUrl']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function newActionWithRedirectUrlInSiteInPostPassesRedirectUrlToView(): void
     {
         $redirectUrl = 'https://example.com/';
@@ -351,9 +320,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($redirectUrl, $this->dataAssignedToView['redirectUrl']);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function initializeCreateActionWithUserArgumentSetsUserValidatorWithSettings(): void
     {
         $user = new FrontendUser();
@@ -377,9 +344,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertContains($this->userValidatorMock, $validators);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function initializeCreateActionWithoutUserArgumentNotTouchesUserValidator(): void
     {
         $this->subject->_set('settings', []);
@@ -389,9 +354,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->initializeCreateAction();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function initializeCreateActionWithCaptchaArgumentSetsCaptchaValidatorWithSettings(): void
     {
         $captcha = new Captcha();
@@ -415,9 +378,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertContains($this->captchaValidatorMock, $validators);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function initializeCreateActionWithoutCaptchaArgumentNotTouchesCaptchaValidator(): void
     {
         $this->subject->_set('settings', []);
@@ -427,9 +388,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->initializeCreateAction();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithUserReturnsHtmlResponse(): void
     {
         $this->credentialsGeneratorMock->method('generateAndSetPasswordForUser')->willReturn('');
@@ -439,9 +398,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(HtmlResponse::class, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithoutUserReturnsHtmlResponse(): void
     {
         $this->credentialsGeneratorMock->method('generateAndSetPasswordForUser')->willReturn('');
@@ -451,9 +408,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(HtmlResponse::class, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionSetsUserPidFromSettings(): void
     {
         $systemFolderUid = 42;
@@ -469,9 +424,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($systemFolderUid, $user->getPid());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithAllowedExistentGroupUidSetsGivenGroup(): void
     {
         $groupUid = 4;
@@ -490,9 +443,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertContains($group, $user->getUserGroup());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithAllowedInexistentGroupUidSetsOtherGroupsFromConfiguration(): void
     {
         $groupUid1 = 4;
@@ -520,9 +471,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertTrue($userGroupsFromUser->contains($userGroup2));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithNotAllowedGroupUidSetsAllGroupsFromConfiguration(): void
     {
         $groupUid1 = 4;
@@ -552,9 +501,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertTrue($userGroupsFromUser->contains($userGroup2));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithNullGroupUidSetsAllGroupsFromConfiguration(): void
     {
         $groupUid1 = 4;
@@ -584,9 +531,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertTrue($userGroupsFromUser->contains($userGroup2));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithNullGroupUidAndNoConfiguredGroupsSetsNoGroups(): void
     {
         $this->subject->_set('settings', ['groupsForNewUsers' => '']);
@@ -602,9 +547,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertCount(0, $userGroupsFromUser);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithZeroGroupUidSetsAllGroupsFromConfiguration(): void
     {
         $groupUid1 = 4;
@@ -634,9 +577,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertTrue($userGroupsFromUser->contains($userGroup2));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithNegativeGroupUidSetsAllGroupsFromConfiguration(): void
     {
         $groupUid1 = 4;
@@ -666,9 +607,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertTrue($userGroupsFromUser->contains($userGroup2));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionGeneratesUsername(): void
     {
         $user = new FrontendUser();
@@ -681,9 +620,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction($user);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionGeneratesPassword(): void
     {
         $user = new FrontendUser();
@@ -694,9 +631,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction($user);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionSetsLastLoginToNow(): void
     {
         $user = new FrontendUser();
@@ -709,9 +644,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertEquals(new \DateTime(self::NOW), $lastLoginDate);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForTermsNotAcknowledgedKeepsTermsDateOfAcceptanceUnchanged(): void
     {
         $user = new FrontendUser();
@@ -723,9 +656,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertNull($user->getTermsDateOfAcceptance());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForTermsAcknowledgedTermsDateOfAcceptanceToNow(): void
     {
         $user = new FrontendUser();
@@ -739,9 +670,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertEquals(new \DateTime(self::NOW), $termsAcceptedDate);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForPrivacyNotSetKeepsPrivacyDateOfAcceptanceUnchanged(): void
     {
         $user = new FrontendUser();
@@ -753,9 +682,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertNull($user->getPrivacyDateOfAcceptance());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForPrivacySetPrivacyDateOfAcceptanceToNow(): void
     {
         $user = new FrontendUser();
@@ -769,9 +696,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertEquals(new \DateTime(self::NOW), $privacyAcceptedDate);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithFullNameAndFirstNameAndLastNameKeepsFullNameUnchanged(): void
     {
         $fullName = 'Max Performance';
@@ -789,9 +714,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($fullName, $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithFullNameAndFirstNameAndNoLastNameKeepsFullNameUnchanged(): void
     {
         $fullName = 'Max Performance';
@@ -808,9 +731,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($fullName, $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithFullNameAndLastNameAndNoFirstNameKeepsFullNameUnchanged(): void
     {
         $fullName = 'Max Performance';
@@ -827,9 +748,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($fullName, $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithoutFullNameAndFirstAndLastNameBuildsFullNameFromFirstAndLastName(): void
     {
         $user = new FrontendUser();
@@ -848,9 +767,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($expectedFullName, $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithFirstNameOnlySetsFullNameToFirstName(): void
     {
         $user = new FrontendUser();
@@ -866,9 +783,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($firstName, $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithLastNameOnlySetsFullNameToLastName(): void
     {
         $user = new FrontendUser();
@@ -884,9 +799,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame($lastName, $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionForUserWithNoNameAtAllKeepsEmptyFullyName(): void
     {
         $user = new FrontendUser();
@@ -900,9 +813,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertSame('', $user->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithUserAddsProvidedUserToRepository(): void
     {
         $user = new FrontendUser();
@@ -915,9 +826,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction($user);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithUserPersistsEverything(): void
     {
         $user = new FrontendUser();
@@ -930,9 +839,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction($user);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithNullUserNotAddsAnythingToRepository(): void
     {
         $this->userRepositoryMock->expects(self::never())->method('add')->with(self::anything());
@@ -940,9 +847,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction(null);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithoutUserNotAddsAnythingToRepository(): void
     {
         $this->userRepositoryMock->expects(self::never())->method('add')->with(self::anything());
@@ -950,9 +855,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithNullUserNotPersistsAnything(): void
     {
         $this->userRepositoryMock->expects(self::never())->method('persistAll');
@@ -960,9 +863,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction(null);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithoutUserNotPersistsAnything(): void
     {
         $this->userRepositoryMock->expects(self::never())->method('persistAll');
@@ -970,11 +871,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction();
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider emptyParameterDataProvider
-     */
+    #[Test]
+    #[DataProvider('emptyParameterDataProvider')]
     public function createActionWithUserWithEmptyRedirectUrlInPostNotRedirects(?string $redirectUrl): void
     {
         $this->postParameters['redirect_url'] = $redirectUrl;
@@ -988,9 +886,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction(new FrontendUser());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithUserWithLocalRedirectUrlInPostRedirectsToRedirectUrl(): void
     {
         $redirectUrl = self::SITE_URL;
@@ -1006,9 +902,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         self::assertInstanceOf(RedirectResponse::class, $result);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithUserWithExternalRedirectUrlNotRedirects(): void
     {
         $this->postParameters['redirect_url'] = 'https://www.oliverklee.de/';
@@ -1022,9 +916,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction(new FrontendUser());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionWithoutUserWithRedirectUrlInSiteNotRedirects(): void
     {
         $this->postParameters['redirect_url'] = self::SITE_URL;
@@ -1034,9 +926,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->createAction();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createActionStoresUidOfNewUserInSession(): void
     {
         $userUid = 42;

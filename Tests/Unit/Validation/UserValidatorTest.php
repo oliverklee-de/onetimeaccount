@@ -7,14 +7,14 @@ namespace OliverKlee\Onetimeaccount\Tests\Unit\Validation;
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
 use OliverKlee\FeUserExtraFields\Domain\Model\Gender;
 use OliverKlee\Onetimeaccount\Validation\UserValidator;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\ValidatorInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
-/**
- * @covers \OliverKlee\Onetimeaccount\Validation\UserValidator
- */
+#[CoversClass(UserValidator::class)]
 final class UserValidatorTest extends UnitTestCase
 {
     private const VALIDATABLE_FIELDS = [
@@ -80,26 +80,20 @@ final class UserValidatorTest extends UnitTestCase
         return $user;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isValidator(): void
     {
         self::assertInstanceOf(ValidatorInterface::class, $this->subject);
         self::assertInstanceOf(AbstractValidator::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isSingleton(): void
     {
         self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithNonUserValueReturnsNoErrors(): void
     {
         $result = $this->subject->validate(new \stdClass());
@@ -107,9 +101,7 @@ final class UserValidatorTest extends UnitTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithEmptyUserForNoShowOrRequiredFieldsSettingReturnsNoErrors(): void
     {
         $result = $this->subject->validate(new FrontendUser());
@@ -117,9 +109,7 @@ final class UserValidatorTest extends UnitTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithEmptyUserForEmptyRequiredAndVisibleFieldsReturnsNoErrors(): void
     {
         $this->subject->setSettings(['fieldsToShow' => '', 'requiredFields' => '']);
@@ -129,9 +119,7 @@ final class UserValidatorTest extends UnitTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateWithEmptyUserForNoRequiredFieldsButAllVisibleReturnsNoErrors(): void
     {
         $concatenatedFields = \implode(',', self::VALIDATABLE_FIELDS);
@@ -142,9 +130,7 @@ final class UserValidatorTest extends UnitTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateModelWithFullModelForAllFieldsRequiredAndVisibleReturnsNoErrors(): void
     {
         $concatenatedFields = \implode(',', self::VALIDATABLE_FIELDS);
@@ -155,9 +141,7 @@ final class UserValidatorTest extends UnitTestCase
         self::assertFalse($result->hasErrors());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function validateModelWithFullModelForNoFieldsRequiredAndAllVisibleReturnsNoErrors(): void
     {
         $concatenatedFields = \implode(',', self::VALIDATABLE_FIELDS);
