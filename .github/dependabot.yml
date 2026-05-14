@@ -6,7 +6,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    milestone: 24
+    milestone: 18
 
   - package-ecosystem: "composer"
     directory: "/"
@@ -26,4 +26,4 @@ updates:
         versions: [ ">= 8.0.0" ]
       - dependency-name: "typo3/coding-standards"
     versioning-strategy: "increase"
-    milestone: 24
+    milestone: 18
