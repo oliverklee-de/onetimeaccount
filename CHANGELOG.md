@@ -11,11 +11,17 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+### Removed
+
+### Fixed
+
+## 7.3.1: Bugfixes and dependency updates
+
+### Changed
+
 - Require oelib >= 6.3.0 (#1222, #1229)
 - Allow feuserextrafields 7.x (#1213)
 - Require feuserextrafields >= 6.7.1 (#1212)
-
-### Removed
 
 ### Fixed
 

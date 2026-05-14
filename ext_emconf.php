@@ -3,7 +3,7 @@
 $EM_CONF[$_EXTKEY] = [
     'title' => 'One-time FE account',
     'description' => 'Allow users to create a short-lived FE user account without having to enter a user name or password.',
-    'version' => '7.3.0',
+    'version' => '7.3.1',
     'category' => 'plugin',
     'constraints' => [
         'depends' => [
