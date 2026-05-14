@@ -17,12 +17,7 @@ class CaptchaFactory implements SingletonInterface
     private const ADDITIONAL_SECRET = 'onetimeaccount-captcha';
     private const DATE_FORMAT = 'Y-m-d H:i:s';
 
-    private Context $context;
-
-    public function __construct(Context $context)
-    {
-        $this->context = $context;
-    }
+    public function __construct(private Context $context) {}
 
     /**
      * Creates a new Captcha instance that is valid for exactly 5 minutes.

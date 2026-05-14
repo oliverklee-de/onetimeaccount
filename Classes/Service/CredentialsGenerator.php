@@ -21,13 +21,10 @@ class CredentialsGenerator implements SingletonInterface
      */
     private const PASSWORD_LENGTH = 32;
 
-    private FrontendUserRepository $userRepository;
-
     private PasswordHashInterface $passwordHasher;
 
-    public function __construct(FrontendUserRepository $repository)
+    public function __construct(private FrontendUserRepository $userRepository)
     {
-        $this->userRepository = $repository;
         $this->passwordHasher = GeneralUtility::makeInstance(PasswordHashFactory::class)->getDefaultHashInstance('FE');
     }
 

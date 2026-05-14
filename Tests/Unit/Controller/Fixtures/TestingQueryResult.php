@@ -17,17 +17,9 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 final class TestingQueryResult implements QueryResultInterface
 {
     /**
-     * @var ObjectStorage<FrontendUserGroup>
+     * @param ObjectStorage<FrontendUserGroup> $objectStorage
      */
-    private ObjectStorage $objectStorage;
-
-    /**
-     * @param ObjectStorage<FrontendUserGroup> $storage
-     */
-    public function __construct(ObjectStorage $storage)
-    {
-        $this->objectStorage = $storage;
-    }
+    public function __construct(private ObjectStorage $objectStorage) {}
 
     public function current(): FrontendUserGroup
     {
