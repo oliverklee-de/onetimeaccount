@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Use PHP 8.1 language features (#1264, #1265, #1266)
+
 ### Removed
 
 - Drop support for TYPO3 11LTS (#1255, #1256, #1257, #1258)
