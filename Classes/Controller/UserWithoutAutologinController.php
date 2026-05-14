@@ -38,9 +38,8 @@ class UserWithoutAutologinController extends ActionController
 
     /**
      * Creates the user creation form (which initially is empty).
-     *
-     * @IgnoreValidation("user")
      */
+    #[IgnoreValidation(['argumentName' => 'user'])]
     public function newAction(?FrontendUser $user = null, ?int $userGroup = null): ResponseInterface
     {
         $newUser = ($user instanceof FrontendUser) ? $user : GeneralUtility::makeInstance(FrontendUser::class);
