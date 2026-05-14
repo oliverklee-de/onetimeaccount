@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter &\\$configuration by\\-ref type of method OliverKlee\\\\Onetimeaccount\\\\Configuration\\\\FlexForms\\:\\:buildFields\\(\\) expects array\\<string, array\\<string, string\\>\\>, array\\<string, array\\<int\\|string, array\\<int, mixed\\>\\|string\\>\\> given\\.$#"
-			count: 1
-			path: ../../Classes/Configuration/FlexForms.php
-
-		-
 			message: "#^Call to function is_array\\(\\) with array will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Classes/Controller/UserWithoutAutologinController.php
@@ -39,11 +34,6 @@ parameters:
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertArrayHasKey\\(\\) with 0 and non\\-empty\\-list\\<non\\-empty\\-string\\> will always evaluate to true\\.$#"
 			count: 1
 			path: ../../Tests/Unit/Configuration/ConfigurationCheckTest.php
-
-		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertIsArray\\(\\) with array\\<string, string\\> will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Configuration/FlexFormsTest.php
 
 		-
 			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
