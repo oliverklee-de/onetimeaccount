@@ -41,26 +41,6 @@ parameters:
 			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
 
 		-
-			message: "#^Class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
-
-		-
-			message: "#^Instantiated class TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException not found\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\MockObject\\\\Builder\\\\InvocationMocker\\<mixed\\>\\:\\:willThrowException\\(\\) expects Throwable, TYPO3\\\\CMS\\\\Extbase\\\\Mvc\\\\Exception\\\\StopActionException given\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$exception of method PHPUnit\\\\Framework\\\\TestCase\\:\\:expectException\\(\\) expects class\\-string\\<Throwable\\>, string given\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
-
-		-
 			message: "#^Cannot access offset 'SYS' on mixed\\.$#"
 			count: 2
 			path: ../../Tests/Unit/Service/CaptchaFactoryTest.php

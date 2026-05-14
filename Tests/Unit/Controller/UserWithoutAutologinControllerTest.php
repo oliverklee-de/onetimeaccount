@@ -20,12 +20,10 @@ use PHPUnit\Framework\MockObject\MockObject;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\RedirectResponse;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\Argument as ExtbaseArgument;
 use TYPO3\CMS\Extbase\Mvc\Controller\Arguments;
-use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Extbase\Mvc\Request;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
@@ -187,18 +185,10 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     private function mockRedirectToUri(string $uri): void
     {
-        if ((new Typo3Version())->getMajorVersion() < 12) {
-            $this->subject
-                ->expects(self::once())->method('redirectToUri')
-                ->with($uri)
-                ->willThrowException(new StopActionException('redirectToUri', 1476045828));
-            $this->expectException(StopActionException::class);
-        } else {
-            $redirectResponse = $this->createStub(RedirectResponse::class);
-            $this->subject
-                ->expects(self::once())->method('redirectToUri')->with($uri)
-                ->willReturn($redirectResponse);
-        }
+        $redirectResponse = $this->createStub(RedirectResponse::class);
+        $this->subject
+            ->expects(self::once())->method('redirectToUri')->with($uri)
+            ->willReturn($redirectResponse);
     }
 
     /**
@@ -294,7 +284,6 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->newAction();
 
         self::assertInstanceOf(XclassFrontendUser::class, $this->dataAssignedToView['user']);
-
     }
 
     /**
@@ -1043,12 +1032,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
             ->willReturn('');
         $this->mockRedirectToUri($redirectUrl);
 
-        if ((new Typo3Version())->getMajorVersion() < 12) {
-            $this->subject->createAction(new FrontendUser());
-        } else {
-            $result = $this->subject->createAction(new FrontendUser());
-            self::assertInstanceOf(RedirectResponse::class, $result);
-        }
+        $result = $this->subject->createAction(new FrontendUser());
+        self::assertInstanceOf(RedirectResponse::class, $result);
     }
 
     /**

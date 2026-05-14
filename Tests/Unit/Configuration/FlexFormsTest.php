@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Tests\Unit\Configuration;
 
 use OliverKlee\Onetimeaccount\Configuration\FlexForms;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -72,17 +71,9 @@ final class FlexFormsTest extends UnitTestCase
         $items = $configuration['items'];
         self::assertIsArray($items);
 
-        if ((new Typo3Version())->getMajorVersion() < 12) {
-            $labelKey = 0;
-            $valueKey = 1;
-        } else {
-            $labelKey = 'label';
-            $valueKey = 'value';
-        }
-
         $expected = [
-            $labelKey => self::LOCALLANG_PREFIX . $fieldKey,
-            $valueKey => $fieldKey,
+            'label' => self::LOCALLANG_PREFIX . $fieldKey,
+            'value' => $fieldKey,
         ];
         self::assertContains($expected, $items);
     }

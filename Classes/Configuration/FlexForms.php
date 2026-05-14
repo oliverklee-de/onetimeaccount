@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace OliverKlee\Onetimeaccount\Configuration;
 
-use TYPO3\CMS\Core\Information\Typo3Version;
-
 /**
  * This class provides functions for building FlexForms.
  */
@@ -44,20 +42,12 @@ class FlexForms
      */
     public function buildFields(array &$configuration): void
     {
-        if ((new Typo3Version())->getMajorVersion() < 12) {
-            $labelKey = 0;
-            $valueKey = 1;
-        } else {
-            $labelKey = 'label';
-            $valueKey = 'value';
-        }
-
         $items = [];
         foreach (static::AVAILABLE_FIELDS as $fieldKey) {
             $label = 'LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:' . $fieldKey;
             $items[] = [
-                $labelKey => $label,
-                $valueKey => $fieldKey,
+                'label' => $label,
+                'value' => $fieldKey,
             ];
         }
 
