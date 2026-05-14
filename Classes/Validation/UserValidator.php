@@ -32,109 +32,59 @@ class UserValidator extends AbstractConfigurationDependentValidator implements S
 
     private function isIdentityFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        switch ($field) {
-            case 'name':
-                $result = $user->getName() !== '';
-                break;
-            case 'firstName':
-                $result = $user->getFirstName() !== '';
-                break;
-            case 'lastName':
-                $result = $user->getLastName() !== '';
-                break;
-            case 'title':
-                $result = $user->getTitle() !== '';
-                break;
-            case 'fullSalutation':
-                $result = $user->getFullSalutation() !== '';
-                break;
-            case 'gender':
-                $result = $user->getGender() !== Gender::notProvided();
-                break;
-            case 'dateOfBirth':
-                $result = $user->getDateOfBirth() instanceof \DateTimeInterface;
-                break;
-            case 'status':
-                $result = $user->getStatus() !== FrontendUser::STATUS_NONE;
-                break;
-            default:
-                $result = true;
-        }
+        $result = match ($field) {
+            'name' => $user->getName() !== '',
+            'firstName' => $user->getFirstName() !== '',
+            'lastName' => $user->getLastName() !== '',
+            'title' => $user->getTitle() !== '',
+            'fullSalutation' => $user->getFullSalutation() !== '',
+            'gender' => $user->getGender() !== Gender::notProvided(),
+            'dateOfBirth' => $user->getDateOfBirth() instanceof \DateTimeInterface,
+            'status' => $user->getStatus() !== FrontendUser::STATUS_NONE,
+            default => true,
+        };
 
         return $result;
     }
 
     private function isAddressFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        switch ($field) {
-            case 'address':
-                $result = $user->getAddress() !== '';
-                break;
-            case 'zip':
-                $result = $user->getZip() !== '';
-                break;
-            case 'city':
-                $result = $user->getCity() !== '';
-                break;
-            case 'zone':
-                $result = $user->getZone() !== '';
-                break;
-            case 'country':
-                $result = $user->getCountry() !== '';
-                break;
-            default:
-                $result = true;
-        }
+        $result = match ($field) {
+            'address' => $user->getAddress() !== '',
+            'zip' => $user->getZip() !== '',
+            'city' => $user->getCity() !== '',
+            'zone' => $user->getZone() !== '',
+            'country' => $user->getCountry() !== '',
+            default => true,
+        };
 
         return $result;
     }
 
     private function isContactFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        switch ($field) {
-            case 'telephone':
-                $result = $user->getTelephone() !== '';
-                break;
-            case 'email':
-                $result = $user->getEmail() !== '';
-                break;
-            case 'www':
-                $result = $user->getWww() !== '';
-                break;
-            default:
-                $result = true;
-        }
+        $result = match ($field) {
+            'telephone' => $user->getTelephone() !== '',
+            'email' => $user->getEmail() !== '',
+            'www' => $user->getWww() !== '',
+            default => true,
+        };
 
         return $result;
     }
 
     private function isMetaFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        switch ($field) {
-            case 'company':
-                $result = $user->getCompany() !== '';
-                break;
-            case 'department':
-                $result = $user->getDepartment() !== '';
-                break;
-            case 'vatIn':
-                $result = $user->getVatIn() !== '';
-                break;
-            case 'privacy':
-                $result = $user->getPrivacy();
-                break;
-            case 'termsAcknowledged':
-                $result = $user->hasTermsAcknowledged();
-                break;
-            case 'status':
-                $result = $user->getStatus() !== FrontendUser::STATUS_NONE;
-                break;
-            case 'comments':
-                $result = $user->getComments() !== '';
-                break;
-            default:
-                $result = true;
-        }
+        $result = match ($field) {
+            'company' => $user->getCompany() !== '',
+            'department' => $user->getDepartment() !== '',
+            'vatIn' => $user->getVatIn() !== '',
+            'privacy' => $user->getPrivacy(),
+            'termsAcknowledged' => $user->hasTermsAcknowledged(),
+            'status' => $user->getStatus() !== FrontendUser::STATUS_NONE,
+            'comments' => $user->getComments() !== '',
+            default => true,
+        };
 
         return $result;
     }
