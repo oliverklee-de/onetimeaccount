@@ -44,57 +44,27 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
 
     protected bool $resetSingletonInstances = true;
 
-    /**
-     * @var UserWithoutAutologinController&MockObject&AccessibleObjectInterface
-     */
-    private UserWithoutAutologinController $subject;
+    private UserWithoutAutologinController&MockObject&AccessibleObjectInterface $subject;
 
-    /**
-     * @var TemplateView&MockObject
-     */
-    private TemplateView $viewMock;
+    private TemplateView&MockObject $viewMock;
 
-    /**
-     * @var FrontendUserRepository&MockObject
-     */
-    private FrontendUserRepository $userRepositoryMock;
+    private FrontendUserRepository&MockObject $userRepositoryMock;
 
-    /**
-     * @var FrontendUserGroupRepository&MockObject
-     */
-    private FrontendUserGroupRepository $userGroupRepositoryMock;
+    private FrontendUserGroupRepository&MockObject $userGroupRepositoryMock;
 
-    /**
-     * @var CredentialsGenerator&MockObject
-     */
-    private CredentialsGenerator $credentialsGeneratorMock;
+    private CredentialsGenerator&MockObject $credentialsGeneratorMock;
 
-    /**
-     * @var UserValidator&MockObject
-     */
-    private UserValidator $userValidatorMock;
+    private UserValidator&MockObject $userValidatorMock;
 
-    /**
-     * @var CaptchaFactory&MockObject
-     */
-    private CaptchaFactory $captchaFactoryMock;
+    private CaptchaFactory&MockObject $captchaFactoryMock;
 
-    /**
-     * @var CaptchaValidator&MockObject
-     */
-    private CaptchaValidator $captchaValidatorMock;
+    private CaptchaValidator&MockObject $captchaValidatorMock;
 
     private Arguments $controllerArguments;
 
-    /**
-     * @var FrontendUserAuthentication&MockObject
-     */
-    private FrontendUserAuthentication $userMock;
+    private FrontendUserAuthentication&MockObject $userMock;
 
-    /**
-     * @var Request&MockObject
-     */
-    private Request $requestMock;
+    private Request&MockObject $requestMock;
 
     /**
      * @var array<string, string|null>
