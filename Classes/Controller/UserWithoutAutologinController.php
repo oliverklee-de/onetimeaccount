@@ -66,26 +66,28 @@ class UserWithoutAutologinController extends ActionController
     public function newAction(?FrontendUser $user = null, ?int $userGroup = null): ResponseInterface
     {
         $newUser = ($user instanceof FrontendUser) ? $user : GeneralUtility::makeInstance(FrontendUser::class);
-        $this->view->assign('user', $newUser);
-        $this->view->assign('selectedUserGroup', $userGroup);
+        $dataForView = [
+            'user' => $newUser,
+            'selectedUserGroup' => $userGroup,
+        ];
         $userGroupSetting = $this->settings['groupsForNewUsers'] ?? null;
         $userGroupUids = \is_string($userGroupSetting) ? GeneralUtility::intExplode(',', $userGroupSetting, true) : [];
         if ($userGroupUids !== []) {
-            $userGroups = $this->userGroupRepository->findByUids($userGroupUids);
-            $this->view->assign('userGroups', $userGroups);
+            $dataForView['userGroups'] = $this->userGroupRepository->findByUids($userGroupUids);
         }
 
         $captchaSetting = $this->settings['captcha'] ?? 0;
         $isCaptchaEnabled = (\is_string($captchaSetting) || \is_int($captchaSetting)) ? (bool)$captchaSetting : false;
-
         if ($isCaptchaEnabled) {
-            $this->view->assign('captcha', $this->captchaFactory->generateChallenge());
+            $dataForView['captcha'] = $this->captchaFactory->generateChallenge();
         }
 
         $redirectUrl = $this->getRedirectUrl();
         if (\is_string($redirectUrl)) {
-            $this->view->assign('redirectUrl', $redirectUrl);
+            $dataForView['redirectUrl'] = $redirectUrl;
         }
+
+        $this->view->assignMultiple($dataForView);
 
         return $this->htmlResponse();
     }

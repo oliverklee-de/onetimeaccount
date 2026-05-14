@@ -108,6 +108,11 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     private array $postParameters = [];
 
+    /**
+     * @var array<string, mixed>
+     */
+    private array $dataAssignedToView = [];
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -138,6 +143,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         );
 
         $this->viewMock = $this->createMock(TemplateView::class);
+        $this->viewMock->method('assignMultiple')->willReturnCallback(function (array $values): void {
+            $this->dataAssignedToView = $values;
+        });
         $this->subject->_set('view', $this->viewMock);
 
         $this->controllerArguments = new Arguments();
@@ -218,12 +226,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
     {
         $user = new FrontendUser();
 
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', $user],
-            ['selectedUserGroup', self::anything()],
-        );
-
         $this->subject->newAction($user);
+
+        self::assertSame($user, $this->dataAssignedToView['user']);
     }
 
     /**
@@ -231,12 +236,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     public function newActionWithoutUserPassesVirginUserToView(): void
     {
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', self::isInstanceOf(FrontendUser::class)],
-            ['selectedUserGroup', self::anything()],
-        );
-
         $this->subject->newAction();
+
+        self::assertInstanceOf(FrontendUser::class, $this->dataAssignedToView['user']);
     }
 
     /**
@@ -244,12 +246,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     public function newActionWithNullUserPassesVirginUserToView(): void
     {
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', self::isInstanceOf(FrontendUser::class)],
-            ['selectedUserGroup', self::anything()],
-        );
-
         $this->subject->newAction(null);
+
+        self::assertInstanceOf(FrontendUser::class, $this->dataAssignedToView['user']);
     }
 
     /**
@@ -258,12 +257,10 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
     public function newActionWithUserGroupPassesProvidedUserGroupUidToView(): void
     {
         $userGroupUid = 5;
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', $userGroupUid],
-        );
 
         $this->subject->newAction(null, $userGroupUid);
+
+        self::assertSame($userGroupUid, $this->dataAssignedToView['selectedUserGroup']);
     }
 
     /**
@@ -271,12 +268,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     public function newActionWithNullUserGroupPassesNullUserGroupToView(): void
     {
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', null],
-        );
-
         $this->subject->newAction(null, null);
+
+        self::assertNull($this->dataAssignedToView['selectedUserGroup']);
     }
 
     /**
@@ -284,12 +278,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
      */
     public function newActionWithMissingUserGroupPassesNullUserGroupToView(): void
     {
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', null],
-        );
+        $this->subject->newAction(null);
 
-        $this->subject->newAction(null, null);
+        self::assertNull($this->dataAssignedToView['selectedUserGroup']);
     }
 
     /**
@@ -300,12 +291,10 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         // @phpstan-ignore-next-line We know that the necessary array keys exist.
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][FrontendUser::class] = ['className' => XclassFrontendUser::class];
 
-        $this->viewMock->expects(self::atLeast(2))->method('assign')->withConsecutive(
-            ['user', self::isInstanceOf(XclassFrontendUser::class)],
-            ['selectedUserGroup', self::anything()],
-        );
-
         $this->subject->newAction();
+
+        self::assertInstanceOf(XclassFrontendUser::class, $this->dataAssignedToView['user']);
+
     }
 
     /**
@@ -319,13 +308,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $userGroups = $this->createStub(QueryResultInterface::class);
         $this->userGroupRepositoryMock->method('findByUids')->with([$groupUid1, $groupUid2])->willReturn($userGroups);
 
-        $this->viewMock->expects(self::atLeast(3))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', self::anything()],
-            ['userGroups', $userGroups],
-        );
-
         $this->subject->newAction();
+
+        self::assertSame($userGroups, $this->dataAssignedToView['userGroups']);
     }
 
     /**
@@ -337,13 +322,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $captcha = new Captcha();
         $this->captchaFactoryMock->method('generateChallenge')->willReturn($captcha);
 
-        $this->viewMock->expects(self::atLeast(3))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', self::anything()],
-            ['captcha', $captcha],
-        );
-
         $this->subject->newAction(null);
+
+        self::assertSame($captcha, $this->dataAssignedToView['captcha']);
     }
 
     /**
@@ -366,12 +347,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
     {
         $this->getParameters['redirect_url'] = $redirectUrl;
 
-        $this->viewMock->expects(self::exactly(2))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', self::anything()],
-        );
-
         $this->subject->newAction();
+
+        self::assertArrayNotHasKey('redirectUrl', $this->dataAssignedToView);
     }
 
     /**
@@ -383,12 +361,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
     {
         $this->postParameters['redirect_url'] = $redirectUrl;
 
-        $this->viewMock->expects(self::exactly(2))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', self::anything()],
-        );
-
         $this->subject->newAction();
+
+        self::assertArrayNotHasKey('redirectUrl', $this->dataAssignedToView);
     }
 
     /**
@@ -399,13 +374,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $redirectUrl = 'https://example.com/';
         $this->getParameters['redirect_url'] = $redirectUrl;
 
-        $this->viewMock->expects(self::exactly(3))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', self::anything()],
-            ['redirectUrl', $redirectUrl],
-        );
-
         $this->subject->newAction();
+
+        self::assertSame($redirectUrl, $this->dataAssignedToView['redirectUrl']);
     }
 
     /**
@@ -416,13 +387,9 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $redirectUrl = 'https://example.com/';
         $this->postParameters['redirect_url'] = $redirectUrl;
 
-        $this->viewMock->expects(self::exactly(3))->method('assign')->withConsecutive(
-            ['user', self::anything()],
-            ['selectedUserGroup', self::anything()],
-            ['redirectUrl', $redirectUrl],
-        );
-
         $this->subject->newAction();
+
+        self::assertSame($redirectUrl, $this->dataAssignedToView['redirectUrl']);
     }
 
     /**
