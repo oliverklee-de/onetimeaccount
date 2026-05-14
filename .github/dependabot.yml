@@ -15,7 +15,6 @@ updates:
     allow:
       - dependency-type: "development"
     ignore:
-      - dependency-name: "oliverklee/oelib"
       - dependency-name: "phpunit/phpunit"
         versions: [ ">= 9.0.0" ]
       - dependency-name: "psr/log"
@@ -24,6 +23,5 @@ updates:
       - dependency-name: "symfony/yaml"
       - dependency-name: "typo3/testing-framework"
         versions: [ ">= 8.0.0" ]
-      - dependency-name: "typo3/coding-standards"
     versioning-strategy: "increase"
     milestone: 18
