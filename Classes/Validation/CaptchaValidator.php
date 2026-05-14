@@ -18,17 +18,9 @@ class CaptchaValidator extends AbstractValidator implements SingletonInterface
 {
     protected $acceptsEmptyValues = false;
 
-    private CaptchaFactory $captchaFactory;
-
     private bool $enabled = false;
 
-    private Context $context;
-
-    public function __construct(Context $context, CaptchaFactory $factory)
-    {
-        $this->context = $context;
-        $this->captchaFactory = $factory;
-    }
+    public function __construct(private Context $context, private CaptchaFactory $captchaFactory) {}
 
     /**
      * @param array<string, string> $settings

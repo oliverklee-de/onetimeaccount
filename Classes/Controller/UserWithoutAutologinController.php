@@ -26,37 +26,15 @@ use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
  */
 class UserWithoutAutologinController extends ActionController
 {
-    private FrontendUserRepository $userRepository;
-
-    private FrontendUserGroupRepository $userGroupRepository;
-
-    private CredentialsGenerator $credentialsGenerator;
-
-    private UserValidator $userValidator;
-
-    private CaptchaValidator $captchaValidator;
-
-    private CaptchaFactory $captchaFactory;
-
-    private Context $context;
-
     public function __construct(
-        FrontendUserRepository $userRepository,
-        FrontendUserGroupRepository $userGroupRepository,
-        CredentialsGenerator $credentialsGenerator,
-        UserValidator $userValidator,
-        CaptchaValidator $captchaValidator,
-        CaptchaFactory $captchaFactory,
-        Context $context
-    ) {
-        $this->userRepository = $userRepository;
-        $this->userGroupRepository = $userGroupRepository;
-        $this->credentialsGenerator = $credentialsGenerator;
-        $this->userValidator = $userValidator;
-        $this->captchaValidator = $captchaValidator;
-        $this->captchaFactory = $captchaFactory;
-        $this->context = $context;
-    }
+        private FrontendUserRepository $userRepository,
+        private FrontendUserGroupRepository $userGroupRepository,
+        private CredentialsGenerator $credentialsGenerator,
+        private UserValidator $userValidator,
+        private CaptchaValidator $captchaValidator,
+        private CaptchaFactory $captchaFactory,
+        private Context $context
+    ) {}
 
     /**
      * Creates the user creation form (which initially is empty).
