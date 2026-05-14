@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Tests\Unit\Configuration;
 
 use OliverKlee\Onetimeaccount\Configuration\FlexForms;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
@@ -24,7 +25,7 @@ final class FlexFormsTest extends UnitTestCase
     }
 
     /**
-     * @return array<string, array<int, non-empty-string>>
+     * @return array<non-empty-string, array<int, non-empty-string>>
      */
     public function fieldKeysDataProvider(): array
     {
@@ -70,7 +71,19 @@ final class FlexFormsTest extends UnitTestCase
         self::assertArrayHasKey('items', $configuration);
         $items = $configuration['items'];
         self::assertIsArray($items);
-        $expected = [self::LOCALLANG_PREFIX . $fieldKey, $fieldKey];
+
+        if ((new Typo3Version())->getMajorVersion() < 12) {
+            $labelKey = 0;
+            $valueKey = 1;
+        } else {
+            $labelKey = 'label';
+            $valueKey = 'value';
+        }
+
+        $expected = [
+            $labelKey => self::LOCALLANG_PREFIX . $fieldKey,
+            $valueKey => $fieldKey,
+        ];
         self::assertContains($expected, $items);
     }
 }

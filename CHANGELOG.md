@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Use the new TCA format for TYPO3 12LTS (#1250)
 - Avoid using the deprecated `Time` interface (#1243)
 - Avoid using deprecated feuserextrafields API (#1200)
 
