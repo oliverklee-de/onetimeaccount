@@ -48,8 +48,7 @@ return RectorConfig::configure()
         Typo3SetList::CODE_QUALITY,
         Typo3SetList::GENERAL,
 
-        Typo3LevelSetList::UP_TO_TYPO3_11,
-        // Typo3LevelSetList::UP_TO_TYPO3_12,
+        Typo3LevelSetList::UP_TO_TYPO3_12,
         // Typo3LevelSetList::UP_TO_TYPO3_13,
     ])
     // To have a better analysis from PHPStan, we teach it here some more things
