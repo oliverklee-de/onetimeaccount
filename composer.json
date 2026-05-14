@@ -58,9 +58,6 @@
 	"replace": {
 		"typo3-ter/onetimeaccount": "self.version"
 	},
-	"conflict": {
-		"webmozart/assert": "< 1.12.1"
-	},
 	"suggest": {
 		"oliverklee/seminars": "Event management"
 	},
