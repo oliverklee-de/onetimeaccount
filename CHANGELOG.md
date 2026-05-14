@@ -13,7 +13,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Removed
 
-- Drop the automatic configuration check (#1244)
+- Drop the automatic configuration check (#1244, #1252)
 
 ### Fixed
 
