@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
 use Ssch\TYPO3Rector\CodeQuality\General\ConvertImplicitVariablesToExplicitGlobalsRector;
 use Ssch\TYPO3Rector\CodeQuality\General\ExtEmConfRector;
@@ -32,7 +33,7 @@ return RectorConfig::configure()
         // SetList::NAMING,
         // SetList::PRIVATIZATION,
         // SetList::STRICT_BOOLEANS,
-        // SetList::TYPE_DECLARATION,
+        SetList::TYPE_DECLARATION,
 
         // PHPUnit sets
 
