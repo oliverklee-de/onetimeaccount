@@ -19,7 +19,7 @@ final class TestingQueryResult implements QueryResultInterface
     /**
      * @param ObjectStorage<FrontendUserGroup> $objectStorage
      */
-    public function __construct(private ObjectStorage $objectStorage) {}
+    public function __construct(private readonly ObjectStorage $objectStorage) {}
 
     public function current(): FrontendUserGroup
     {
