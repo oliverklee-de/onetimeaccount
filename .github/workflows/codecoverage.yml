@@ -84,5 +84,5 @@ jobs:
       matrix:
         include:
           - typo3-version: "^12.4"
-            php-version: "8.3"
+            php-version: "8.2"
             composer-dependencies: highest
