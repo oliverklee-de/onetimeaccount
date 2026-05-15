@@ -139,29 +139,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
     }
 
     #[Test]
-    public function generateAndSetPasswordForUserWithExistingPasswordReturnsNull(): void
-    {
-        $user = new FrontendUser();
-        $existingPassword = 'gzuio134tfgzuiobft1234';
-        $user->setPassword($existingPassword);
-
-        $result = $this->subject->generateAndSetPasswordForUser($user);
-
-        self::assertNull($result);
-    }
-
-    #[Test]
-    public function generateAndSetPasswordForUserWithoutExistingPasswordReturnsTwelveCharacterPassword(): void
-    {
-        $user = new FrontendUser();
-
-        $result = $this->subject->generateAndSetPasswordForUser($user);
-
-        self::assertIsString($result);
-        self::assertMatchesRegularExpression('/^\\w{32}$/', $result);
-    }
-
-    #[Test]
     public function generateAndSetPasswordForUserWithoutExistingPasswordSetsPasswordHash(): void
     {
         $user = new FrontendUser();

@@ -47,20 +47,17 @@ class CredentialsGenerator implements SingletonInterface
     }
 
     /**
-     * Generates a random long password, sets the password hash for the user, and returns the plain-text password
-     * (or `null` if the user already has a password).
+     * Generates a random long password and sets the password hash for the user.
      */
-    public function generateAndSetPasswordForUser(FrontendUser $user): ?string
+    public function generateAndSetPasswordForUser(FrontendUser $user): void
     {
         if ($user->getPassword() !== '') {
-            return null;
+            return;
         }
 
         $password = \bin2hex(\random_bytes(self::PASSWORD_LENGTH / 2));
         $passwordHash = $this->passwordHasher->getHashedPassword($password);
         $user->setPassword($passwordHash);
-
-        return $password;
     }
 
     private function generateAndSetUsernameFromEmail(FrontendUser $user): void

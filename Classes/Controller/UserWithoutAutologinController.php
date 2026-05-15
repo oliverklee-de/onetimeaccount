@@ -130,7 +130,7 @@ class UserWithoutAutologinController extends ActionController
     {
         $this->generateAndSetFullNameForUser($user);
         $this->credentialsGenerator->generateAndSetUsernameForUser($user);
-        $password = $this->credentialsGenerator->generateAndSetPasswordForUser($user);
+        $this->credentialsGenerator->generateAndSetPasswordForUser($user);
 
         $this->enrichWithPid($user);
         $this->enrichWithGroup($user, $userGroupUid);
