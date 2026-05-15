@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Tests\Functional\Service;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
-use OliverKlee\FeUserExtraFields\Domain\Repository\FrontendUserRepository;
 use OliverKlee\Onetimeaccount\Service\CredentialsGenerator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -20,7 +19,7 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(CredentialsGenerator::class)]
 final class CredentialsGeneratorTest extends FunctionalTestCase
 {
-    protected bool $initializeDatabase = false;
+    private const FIXTURES_PATH = __DIR__ . '/Fixtures/CredentialsGenerator';
 
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
@@ -29,8 +28,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
     ];
 
     private CredentialsGenerator $subject;
-
-    private FrontendUserRepository&MockObject $userRepositoryMock;
 
     private PasswordHashInterface&MockObject $passwordHasherMock;
 
@@ -44,8 +41,7 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
 
         GeneralUtility::addInstance(PasswordHashFactory::class, $passwordHashFactoryMock);
 
-        $this->userRepositoryMock = $this->createMock(FrontendUserRepository::class);
-        $this->subject = new CredentialsGenerator($this->userRepositoryMock);
+        $this->subject = $this->get(CredentialsGenerator::class);
     }
 
     #[Test]
@@ -86,7 +82,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
         $email = 'unique@example.com';
         $user = new FrontendUser();
         $user->setEmail($email);
-        $this->userRepositoryMock->method('findOneByUsername')->with($email)->willReturn(null);
 
         $this->subject->generateAndSetUsernameForUser($user);
 
@@ -99,7 +94,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
         $email = 'unique@example.com';
         $user = new FrontendUser();
         $user->setEmail(' ' . $email . ' ');
-        $this->userRepositoryMock->method('findOneByUsername')->with($email)->willReturn(null);
 
         $this->subject->generateAndSetUsernameForUser($user);
 
@@ -109,38 +103,29 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
     #[Test]
     public function generateAndSetUsernameForUserWithExistingEmailUsesEmailWithUniqueSuffixAsUsername(): void
     {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/FrontendUser.csv');
+
         $email = 'unique@example.com';
-        $emailWithSuffix = $email . '_1';
         $user = new FrontendUser();
         $user->setEmail($email);
-        $this->userRepositoryMock->method('findOneByUsername')->willReturnMap([
-            [$email, $user],
-            [$emailWithSuffix, null],
-        ]);
 
         $this->subject->generateAndSetUsernameForUser($user);
 
-        self::assertSame($emailWithSuffix, $user->getUsername());
+        self::assertSame($email . '_1', $user->getUsername());
     }
 
     #[Test]
     public function generateAndSetUsernameForUserWithExistingEmailWithSuffixUsesEmailWithNextSuffixAsUsername(): void
     {
+        $this->importCSVDataSet(self::FIXTURES_PATH . '/TwoFrontendUsers.csv');
+
         $email = 'unique@example.com';
-        $emailWithSuffix1 = $email . '_1';
-        $emailWithSuffix2 = $email . '_2';
         $user = new FrontendUser();
         $user->setEmail($email);
 
-        $this->userRepositoryMock->method('findOneByUsername')->willReturnMap([
-            [$email, $user],
-            [$emailWithSuffix1, $user],
-            [$emailWithSuffix2, null],
-        ]);
-
         $this->subject->generateAndSetUsernameForUser($user);
 
-        self::assertSame($emailWithSuffix2, $user->getUsername());
+        self::assertSame($email . '_2', $user->getUsername());
     }
 
     #[Test]
