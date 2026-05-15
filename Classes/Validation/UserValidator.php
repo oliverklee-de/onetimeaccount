@@ -32,7 +32,7 @@ class UserValidator extends AbstractConfigurationDependentValidator implements S
 
     private function isIdentityFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        $result = match ($field) {
+        return match ($field) {
             'name' => $user->getName() !== '',
             'firstName' => $user->getFirstName() !== '',
             'lastName' => $user->getLastName() !== '',
@@ -43,13 +43,11 @@ class UserValidator extends AbstractConfigurationDependentValidator implements S
             'status' => $user->getStatus() !== FrontendUser::STATUS_NONE,
             default => true,
         };
-
-        return $result;
     }
 
     private function isAddressFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        $result = match ($field) {
+        return match ($field) {
             'address' => $user->getAddress() !== '',
             'zip' => $user->getZip() !== '',
             'city' => $user->getCity() !== '',
@@ -57,25 +55,21 @@ class UserValidator extends AbstractConfigurationDependentValidator implements S
             'country' => $user->getCountry() !== '',
             default => true,
         };
-
-        return $result;
     }
 
     private function isContactFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        $result = match ($field) {
+        return match ($field) {
             'telephone' => $user->getTelephone() !== '',
             'email' => $user->getEmail() !== '',
             'www' => $user->getWww() !== '',
             default => true,
         };
-
-        return $result;
     }
 
     private function isMetaFieldFilledInForUser(string $field, FrontendUser $user): bool
     {
-        $result = match ($field) {
+        return match ($field) {
             'company' => $user->getCompany() !== '',
             'department' => $user->getDepartment() !== '',
             'vatIn' => $user->getVatIn() !== '',
@@ -85,7 +79,5 @@ class UserValidator extends AbstractConfigurationDependentValidator implements S
             'comments' => $user->getComments() !== '',
             default => true,
         };
-
-        return $result;
     }
 }
