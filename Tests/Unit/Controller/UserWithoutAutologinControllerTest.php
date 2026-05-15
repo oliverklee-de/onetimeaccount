@@ -27,7 +27,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Controller\Argument as ExtbaseArgument;
 use TYPO3\CMS\Extbase\Mvc\Controller\Arguments;
-use TYPO3\CMS\Extbase\Mvc\Request;
+use TYPO3\CMS\Extbase\Mvc\RequestInterface;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\ConjunctionValidator;
@@ -65,7 +65,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
 
     private FrontendUserAuthentication&MockObject $userMock;
 
-    private Request&MockObject $requestMock;
+    private RequestInterface&MockObject $requestMock;
 
     /**
      * @var array<string, string|null>
@@ -121,7 +121,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->subject->_set('arguments', $this->controllerArguments);
 
         $this->userMock = $this->createMock(FrontendUserAuthentication::class);
-        $this->requestMock = $this->createMock(Request::class);
+        $this->requestMock = $this->createMock(RequestInterface::class);
         $this->requestMock->method('getAttribute')->with('frontend.user')->willReturn($this->userMock);
         $this->requestMock->method('getParsedBody')->willReturnCallback(fn(): array => $this->postParameters);
         $this->requestMock->method('getQueryParams')->willReturnCallback(fn(): array => $this->getParameters);
