@@ -9,11 +9,7 @@ use OliverKlee\Onetimeaccount\Service\CredentialsGenerator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use PHPUnit\Framework\MockObject\MockObject;
-use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
-use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashInterface;
 use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 #[CoversClass(CredentialsGenerator::class)]
@@ -29,17 +25,9 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
 
     private CredentialsGenerator $subject;
 
-    private PasswordHashInterface&MockObject $passwordHasherMock;
-
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->passwordHasherMock = $this->createMock(PasswordHashInterface::class);
-        $passwordHashFactoryMock = $this->createMock(PasswordHashFactory::class);
-        $passwordHashFactoryMock->method('getDefaultHashInstance')->with('FE')->willReturn($this->passwordHasherMock);
-
-        GeneralUtility::addInstance(PasswordHashFactory::class, $passwordHashFactoryMock);
 
         $this->subject = $this->get(CredentialsGenerator::class);
     }
@@ -166,7 +154,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
     public function generateAndSetPasswordForUserWithoutExistingPasswordReturnsTwelveCharacterPassword(): void
     {
         $user = new FrontendUser();
-        $this->passwordHasherMock->method('getHashedPassword')->with(self::anything())->willReturn('');
 
         $result = $this->subject->generateAndSetPasswordForUser($user);
 
@@ -175,15 +162,14 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
     }
 
     #[Test]
-    public function generateAndSetPasswordForUserWithoutExistingPasswordSetsHashOfTwelveCharacterPassword(): void
+    public function generateAndSetPasswordForUserWithoutExistingPasswordSetsPasswordHash(): void
     {
-        $passwordHash
-            = '$argon2i$v=19$m=65536,t=16,p=1$ODBXYmZrYkQ2akMwa1lHYg$iWz2uY5XHXAhjqG69uFSQDWvy/y1G931gk/s19sfBxo';
-        $this->passwordHasherMock->method('getHashedPassword')->with(self::isType('string'))->willReturn($passwordHash);
         $user = new FrontendUser();
 
         $this->subject->generateAndSetPasswordForUser($user);
 
-        self::assertSame($passwordHash, $user->getPassword());
+        $passwordHash = $user->getPassword();
+        self::assertStringStartsWith('$argon2i$v=19$m=65536,t=16,p=1$', $passwordHash);
+        self::assertSame(97, \strlen($passwordHash));
     }
 }
