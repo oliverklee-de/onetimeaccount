@@ -3,11 +3,6 @@
     <sheets>
         <general>
             <ROOT>
-                <!--
-                    The sheet title will not be visible in the BE. Still, the XML element needs to be present to
-                    avoid a crash in the BE.
-                -->
-                <sheetTitle/>
                 <type>array</type>
                 <el>
                     <settings.fieldsToShow>
