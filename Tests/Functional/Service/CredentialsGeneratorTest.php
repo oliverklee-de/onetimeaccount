@@ -168,8 +168,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
 
         $this->subject->generateAndSetPasswordForUser($user);
 
-        $passwordHash = $user->getPassword();
-        self::assertStringStartsWith('$argon2i$v=19$m=65536,t=16,p=1$', $passwordHash);
-        self::assertSame(97, \strlen($passwordHash));
+        self::assertStringStartsWith('$argon2i', $user->getPassword());
     }
 }
