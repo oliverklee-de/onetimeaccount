@@ -3,109 +3,95 @@
     <sheets>
         <general>
             <ROOT>
-                <TCEforms>
-                    <!--
-                        The sheet title will not be visible in the BE. Still, the XML element needs to be present to
-                        avoid a crash in the BE.
-                    -->
-                    <sheetTitle/>
-                </TCEforms>
+                <!--
+                    The sheet title will not be visible in the BE. Still, the XML element needs to be present to
+                    avoid a crash in the BE.
+                -->
+                <sheetTitle/>
                 <type>array</type>
                 <el>
                     <settings.fieldsToShow>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.fieldsToShow
-                            </label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <minitems>1</minitems>
-                                <maxitems>99</maxitems>
-                                <itemsProcFunc>
-                                    OliverKlee\Onetimeaccount\Configuration\FlexForms->buildFields
-                                </itemsProcFunc>
-                                <default>fullSalutation,name,address,zip,city,email,telephone</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.fieldsToShow
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <minitems>1</minitems>
+                            <maxitems>99</maxitems>
+                            <itemsProcFunc>
+                                OliverKlee\Onetimeaccount\Configuration\FlexForms->buildFields
+                            </itemsProcFunc>
+                            <default>fullSalutation,name,address,zip,city,email,telephone</default>
+                        </config>
                     </settings.fieldsToShow>
                     <settings.requiredFields>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.requiredFields
-                            </label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectCheckBox</renderType>
-                                <minitems>0</minitems>
-                                <maxitems>99</maxitems>
-                                <itemsProcFunc>
-                                    OliverKlee\Onetimeaccount\Configuration\FlexForms->buildFields
-                                </itemsProcFunc>
-                                <default>name,email</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.requiredFields
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectCheckBox</renderType>
+                            <minitems>0</minitems>
+                            <maxitems>99</maxitems>
+                            <itemsProcFunc>
+                                OliverKlee\Onetimeaccount\Configuration\FlexForms->buildFields
+                            </itemsProcFunc>
+                            <default>name,email</default>
+                        </config>
                     </settings.requiredFields>
                     <settings.systemFolderForNewUsers>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.systemFolderForNewUsers
-                            </label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>1</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.systemFolderForNewUsers
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>1</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.systemFolderForNewUsers>
                     <settings.groupsForNewUsers>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.groupsForNewUsers
-                            </label>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>fe_groups</allowed>
-                                <size>5</size>
-                                <minitems>1</minitems>
-                                <maxitems>99</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.groupsForNewUsers
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>fe_groups</allowed>
+                            <size>5</size>
+                            <minitems>1</minitems>
+                            <maxitems>99</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.groupsForNewUsers>
                     <settings.termsAndConditionsPage>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.termsAndConditionsPage
-                            </label>
-                            <description>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.termsAndConditionsPage.description
-                            </description>
-                            <config>
-                                <type>group</type>
-                                <internal_type>db</internal_type>
-                                <allowed>pages</allowed>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <hideSuggest>1</hideSuggest>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.termsAndConditionsPage
+                        </label>
+                        <description>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.termsAndConditionsPage.description
+                        </description>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>pages</allowed>
+                            <size>1</size>
+                            <minitems>0</minitems>
+                            <maxitems>1</maxitems>
+                            <hideSuggest>1</hideSuggest>
+                        </config>
                     </settings.termsAndConditionsPage>
                     <settings.captcha>
-                        <TCEforms>
-                            <label>
-                                LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.captcha
-                            </label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:onetimeaccount/Resources/Private/Language/locallang.xlf:plugin.captcha
+                        </label>
+                        <config>
+                            <type>check</type>
+                        </config>
                     </settings.captcha>
                 </el>
             </ROOT>
