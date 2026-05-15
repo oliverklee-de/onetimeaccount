@@ -3,8 +3,6 @@
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
-defined('TYPO3') || die();
-
 // This makes the plugin selectable in the BE.
 $pluginSignature = ExtensionUtility::registerPlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
