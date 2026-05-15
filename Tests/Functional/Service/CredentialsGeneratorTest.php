@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace OliverKlee\Onetimeaccount\Tests\Unit\Service;
+namespace OliverKlee\Onetimeaccount\Tests\Functional\Service;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
 use OliverKlee\FeUserExtraFields\Domain\Repository\FrontendUserRepository;
@@ -15,12 +15,18 @@ use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashInterface;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 #[CoversClass(CredentialsGenerator::class)]
-final class CredentialsGeneratorTest extends UnitTestCase
+final class CredentialsGeneratorTest extends FunctionalTestCase
 {
-    protected bool $resetSingletonInstances = true;
+    protected bool $initializeDatabase = false;
+
+    protected array $testExtensionsToLoad = [
+        'oliverklee/feuserextrafields',
+        'oliverklee/oelib',
+        'oliverklee/onetimeaccount',
+    ];
 
     private CredentialsGenerator $subject;
 
