@@ -6,7 +6,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 defined('TYPO3') || die();
 
 // This makes the plugin selectable in the BE.
-ExtensionUtility::registerPlugin(
+$pluginSignature = ExtensionUtility::registerPlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
     'Onetimeaccount',
     // arbitrary, but unique plugin name (not visible in the BE)
@@ -19,12 +19,11 @@ ExtensionUtility::registerPlugin(
 
 // This removes the default controls from the plugin.
 // @phpstan-ignore-next-line We know that this array key exists and is an array.
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['onetimeaccount_withoutautologin']
-    = 'recursive,pages';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'recursive,pages';
 // These two commands add the flexform configuration for the plugin.
 // @phpstan-ignore-next-line We know that this array key exists and is an array.
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['onetimeaccount_withoutautologin'] = 'pi_flexform';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue(
-    'onetimeaccount_withoutautologin',
+    $pluginSignature,
     'FILE:EXT:onetimeaccount/Configuration/FlexForms/Plugin.xml',
 );
