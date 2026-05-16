@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to function is_array\\(\\) with array will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Classes/Controller/UserWithoutAutologinController.php
-
-		-
 			message: "#^Parameter \\#1 \\$pid of method TYPO3\\\\CMS\\\\Extbase\\\\DomainObject\\\\AbstractDomainObject\\:\\:setPid\\(\\) expects int\\<0, max\\>, int given\\.$#"
 			count: 1
 			path: ../../Classes/Controller/UserWithoutAutologinController.php
@@ -21,19 +16,9 @@ parameters:
 			path: ../../Classes/Service/CredentialsGenerator.php
 
 		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Classes/Validation/CaptchaValidator.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 3
 			path: ../../Tests/Functional/Validation/CaptchaValidatorTest.php
-
-		-
-			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
-			count: 1
-			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
 
 		-
 			message: "#^Parameter \\#1 \\$query \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\) of method OliverKlee\\\\Onetimeaccount\\\\Tests\\\\Unit\\\\Controller\\\\Fixtures\\\\TestingQueryResult\\:\\:setQuery\\(\\) should be compatible with parameter \\$query \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<object\\>\\) of method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\<OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\:\\:setQuery\\(\\)$#"
