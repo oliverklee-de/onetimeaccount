@@ -1,11 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 3
-			path: ../../Tests/Functional/Validation/CaptchaValidatorTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$query \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\) of method OliverKlee\\\\Onetimeaccount\\\\Tests\\\\Unit\\\\Controller\\\\Fixtures\\\\TestingQueryResult\\:\\:setQuery\\(\\) should be compatible with parameter \\$query \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<object\\>\\) of method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\<OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\:\\:setQuery\\(\\)$#"
 			count: 1
 			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
