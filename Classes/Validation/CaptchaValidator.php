@@ -6,15 +6,16 @@ namespace OliverKlee\Onetimeaccount\Validation;
 
 use OliverKlee\Onetimeaccount\Domain\Model\Captcha;
 use OliverKlee\Onetimeaccount\Service\CaptchaFactory;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Validation\Error as ValidationError;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Validates that the captcha is filled in correctly (if it is enabled via the configuration).
  */
-class CaptchaValidator extends AbstractValidator implements SingletonInterface
+#[Autoconfigure(public: true)]
+class CaptchaValidator extends AbstractValidator
 {
     protected $acceptsEmptyValues = false;
 

@@ -9,7 +9,6 @@ use OliverKlee\Onetimeaccount\Validation\CaptchaValidator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\ValidatorInterface;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
@@ -33,12 +32,6 @@ final class CaptchaValidatorTest extends UnitTestCase
     {
         self::assertInstanceOf(ValidatorInterface::class, $this->subject);
         self::assertInstanceOf(AbstractValidator::class, $this->subject);
-    }
-
-    #[Test]
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     #[Test]

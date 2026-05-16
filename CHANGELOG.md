@@ -11,6 +11,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Configure DI via attributes (#1297)
 - Require Fluid >= 2.15.0 (#1282)
 - Use PHP 8.1 language features (#1264, #1265, #1266, #1268, #1270)
 
