@@ -10,7 +10,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\DateTimeAspect;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
@@ -44,12 +43,6 @@ final class CaptchaFactoryTest extends UnitTestCase
         unset($GLOBALS['TYPO3_CONF_VARS']['SYS']['encryptionKey']);
 
         parent::tearDown();
-    }
-
-    #[Test]
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     #[Test]

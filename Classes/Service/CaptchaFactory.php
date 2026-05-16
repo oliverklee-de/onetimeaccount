@@ -5,14 +5,15 @@ declare(strict_types=1);
 namespace OliverKlee\Onetimeaccount\Service;
 
 use OliverKlee\Onetimeaccount\Domain\Model\Captcha;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Context\Context;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Factory for building valid Captcha instances to be added to forms.
  */
-class CaptchaFactory implements SingletonInterface
+#[Autoconfigure(public: true)]
+class CaptchaFactory
 {
     private const ADDITIONAL_SECRET = 'onetimeaccount-captcha';
     private const DATE_FORMAT = 'Y-m-d H:i:s';

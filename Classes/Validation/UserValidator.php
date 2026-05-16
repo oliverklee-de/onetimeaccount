@@ -7,7 +7,7 @@ namespace OliverKlee\Onetimeaccount\Validation;
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
 use OliverKlee\FeUserExtraFields\Domain\Model\Gender;
 use OliverKlee\Oelib\Validation\AbstractConfigurationDependentValidator;
-use TYPO3\CMS\Core\SingletonInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -15,7 +15,8 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *
  * @extends AbstractConfigurationDependentValidator<FrontendUser>
  */
-class UserValidator extends AbstractConfigurationDependentValidator implements SingletonInterface
+#[Autoconfigure(public: true)]
+class UserValidator extends AbstractConfigurationDependentValidator
 {
     protected function getModelClassName(): string
     {

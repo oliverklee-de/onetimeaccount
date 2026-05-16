@@ -9,7 +9,6 @@ use OliverKlee\Onetimeaccount\Service\CredentialsGenerator;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
 #[CoversClass(CredentialsGenerator::class)]
@@ -38,12 +37,6 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
         $subject = $this->get(CredentialsGenerator::class);
 
         self::assertInstanceOf(CredentialsGenerator::class, $subject);
-    }
-
-    #[Test]
-    public function isSingleton(): void
-    {
-        self::assertInstanceOf(SingletonInterface::class, $this->subject);
     }
 
     /**

@@ -6,14 +6,15 @@ namespace OliverKlee\Onetimeaccount\Service;
 
 use OliverKlee\FeUserExtraFields\Domain\Model\FrontendUser;
 use OliverKlee\FeUserExtraFields\Domain\Repository\FrontendUserRepository;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashFactory;
 use TYPO3\CMS\Core\Crypto\PasswordHashing\PasswordHashInterface;
-use TYPO3\CMS\Core\SingletonInterface;
 
 /**
  * This class can generate a username and password for a user.
  */
-class CredentialsGenerator implements SingletonInterface
+#[Autoconfigure(public: true)]
+class CredentialsGenerator
 {
     /**
      * needs to be an even number
