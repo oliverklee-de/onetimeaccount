@@ -221,7 +221,7 @@ class UserWithoutAutologinController extends ActionController
         $parsedBody = $this->request->getParsedBody();
         $redirectUrlFromParsedBody = \is_array($parsedBody) ? ($parsedBody['redirect_url'] ?? null) : null;
         $queryParams = $this->request->getQueryParams();
-        $redirectUrlFromQueryParams = \is_array($queryParams) ? ($queryParams['redirect_url'] ?? null) : null;
+        $redirectUrlFromQueryParams = $queryParams['redirect_url'] ?? null;
         $redirectUrl = $redirectUrlFromParsedBody ?? $redirectUrlFromQueryParams ?? null;
 
         return (\is_string($redirectUrl) && $redirectUrl !== '') ? $redirectUrl : null;

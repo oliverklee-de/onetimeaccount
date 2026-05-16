@@ -29,9 +29,7 @@ class CaptchaValidator extends AbstractValidator
     public function setSettings(array $settings): void
     {
         $captchaSetting = $settings['captcha'] ?? '0';
-        if (\is_string($captchaSetting)) {
-            $this->enabled = (bool)$captchaSetting;
-        }
+        $this->enabled = (bool)$captchaSetting;
     }
 
     /**

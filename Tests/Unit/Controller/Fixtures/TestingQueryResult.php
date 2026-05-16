@@ -33,9 +33,7 @@ final class TestingQueryResult implements QueryResultInterface
 
     public function key(): string
     {
-        $key = $this->objectStorage->key();
-
-        return \is_string($key) ? $key : '';
+        return $this->objectStorage->key();
     }
 
     public function valid(): bool
