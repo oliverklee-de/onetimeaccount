@@ -20,6 +20,8 @@ use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 #[CoversClass(CaptchaValidator::class)]
 final class CaptchaValidatorTest extends FunctionalTestCase
 {
+    protected bool $initializeDatabase = false;
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
