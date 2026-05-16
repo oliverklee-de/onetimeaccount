@@ -42,6 +42,8 @@ final class UserValidatorTest extends FunctionalTestCase
         'vatIn',
     ];
 
+    protected bool $initializeDatabase = false;
+
     protected array $testExtensionsToLoad = [
         'oliverklee/feuserextrafields',
         'oliverklee/oelib',
