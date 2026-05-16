@@ -20,6 +20,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\RedirectResponse;
@@ -47,8 +48,6 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
 
     private UserWithoutAutologinController&MockObject&AccessibleObjectInterface $subject;
 
-    private TemplateView&MockObject $viewMock;
-
     private FrontendUserRepository&MockObject $userRepositoryMock;
 
     private FrontendUserGroupRepository&MockObject $userGroupRepositoryMock;
@@ -57,15 +56,13 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
 
     private UserValidator&MockObject $userValidatorMock;
 
-    private CaptchaFactory&MockObject $captchaFactoryMock;
+    private CaptchaFactory&Stub $captchaFactoryStub;
 
     private CaptchaValidator&MockObject $captchaValidatorMock;
 
     private Arguments $controllerArguments;
 
     private FrontendUserAuthentication&MockObject $userMock;
-
-    private RequestInterface&MockObject $requestMock;
 
     /**
      * @var array<string, string|null>
@@ -92,7 +89,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->credentialsGeneratorMock = $this->createMock(CredentialsGenerator::class);
         $this->userValidatorMock = $this->createMock(UserValidator::class);
         $this->captchaValidatorMock = $this->createMock(CaptchaValidator::class);
-        $this->captchaFactoryMock = $this->createMock(CaptchaFactory::class);
+        $this->captchaFactoryStub = self::createStub(CaptchaFactory::class);
         $contextMock = $this->createMock(Context::class);
         $contextMock->method('getPropertyFromAspect')->with('date', 'iso')->willReturn(self::NOW);
 
@@ -106,26 +103,26 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
                 $this->credentialsGeneratorMock,
                 $this->userValidatorMock,
                 $this->captchaValidatorMock,
-                $this->captchaFactoryMock,
+                $this->captchaFactoryStub,
                 $contextMock,
             ],
         );
 
-        $this->viewMock = $this->createMock(TemplateView::class);
-        $this->viewMock->method('assignMultiple')->willReturnCallback(function (array $values): void {
+        $viewStub = self::createStub(TemplateView::class);
+        $viewStub->method('assignMultiple')->willReturnCallback(function (array $values): void {
             $this->dataAssignedToView = $values;
         });
-        $this->subject->_set('view', $this->viewMock);
+        $this->subject->_set('view', $viewStub);
 
         $this->controllerArguments = new Arguments();
         $this->subject->_set('arguments', $this->controllerArguments);
 
         $this->userMock = $this->createMock(FrontendUserAuthentication::class);
-        $this->requestMock = $this->createMock(RequestInterface::class);
-        $this->requestMock->method('getAttribute')->with('frontend.user')->willReturn($this->userMock);
-        $this->requestMock->method('getParsedBody')->willReturnCallback(fn(): array => $this->postParameters);
-        $this->requestMock->method('getQueryParams')->willReturnCallback(fn(): array => $this->getParameters);
-        $this->subject->_set('request', $this->requestMock);
+        $requestMock = $this->createMock(RequestInterface::class);
+        $requestMock->method('getAttribute')->with('frontend.user')->willReturn($this->userMock);
+        $requestMock->method('getParsedBody')->willReturnCallback(fn(): array => $this->postParameters);
+        $requestMock->method('getQueryParams')->willReturnCallback(fn(): array => $this->getParameters);
+        $this->subject->_set('request', $requestMock);
 
         $responseStub = self::createStub(HtmlResponse::class);
         $this->subject->method('htmlResponse')->willReturn($responseStub);
@@ -258,7 +255,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
     {
         $this->subject->_set('settings', ['captcha' => '1']);
         $captcha = new Captcha();
-        $this->captchaFactoryMock->method('generateChallenge')->willReturn($captcha);
+        $this->captchaFactoryStub->method('generateChallenge')->willReturn($captcha);
 
         $this->subject->newAction(null);
 
