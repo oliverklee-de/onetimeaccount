@@ -22,6 +22,7 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\MockObject\Stub;
 use TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Context\DateTimeAspect;
 use TYPO3\CMS\Core\Http\HtmlResponse;
 use TYPO3\CMS\Core\Http\RedirectResponse;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -90,8 +91,8 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
         $this->userValidatorMock = $this->createMock(UserValidator::class);
         $this->captchaValidatorMock = $this->createMock(CaptchaValidator::class);
         $this->captchaFactoryStub = self::createStub(CaptchaFactory::class);
-        $contextMock = $this->createMock(Context::class);
-        $contextMock->method('getPropertyFromAspect')->with('date', 'iso')->willReturn(self::NOW);
+        $context = new Context();
+        $context->setAspect('date', new DateTimeAspect(new \DateTimeImmutable(self::NOW)));
 
         // We need to create an accessible mock in order to be able to set the protected `view`.
         $this->subject = $this->getAccessibleMock(
@@ -104,7 +105,7 @@ final class UserWithoutAutologinControllerTest extends UnitTestCase
                 $this->userValidatorMock,
                 $this->captchaValidatorMock,
                 $this->captchaFactoryStub,
-                $contextMock,
+                $context,
             ],
         );
 
