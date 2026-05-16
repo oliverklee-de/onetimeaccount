@@ -11,7 +11,6 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Localization\LanguageServiceFactory;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Error\Result;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
@@ -30,15 +29,21 @@ final class CaptchaValidatorTest extends FunctionalTestCase
 
     protected array $coreExtensionsToLoad = ['extbase', 'fluid'];
 
-    private CaptchaValidator $subject;
+    private \DateTimeImmutable $now;
 
     private CaptchaFactory $captchaFactory;
+
+    private CaptchaValidator $subject;
 
     protected function setUp(): void
     {
         parent::setUp();
 
         $GLOBALS['LANG'] = $this->get(LanguageServiceFactory::class)->create('default');
+
+        $now = $this->get(Context::class)->getPropertyFromAspect('date', 'full');
+        self::assertInstanceOf(\DateTimeImmutable::class, $now);
+        $this->now = $now;
 
         $this->captchaFactory = $this->get(CaptchaFactory::class);
 
@@ -62,16 +67,6 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         self::assertInstanceOf(Error::class, $firstError);
         $expected = LocalizationUtility::translate('captcha.validationError', 'onetimeaccount');
         self::assertSame($expected, $firstError->getMessage());
-    }
-
-    private function createFutureDateTime(): \DateTime
-    {
-        $nowAsUnixTimestamp = (int)GeneralUtility::makeInstance(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
-        $dateTime = new \DateTime();
-        $dateTime->setTimestamp($nowAsUnixTimestamp + 1);
-
-        return $dateTime;
     }
 
     #[Test]
@@ -110,7 +105,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         $this->subject->setSettings(['captcha' => '1']);
 
         $captcha = new Captcha();
-        $captcha->setValidUntil($this->createFutureDateTime());
+        $captcha->setValidUntil(\DateTime::createFromImmutable($this->now)->modify('+1 second'));
         $captcha->setGivenAnswer('');
 
         $result = $this->subject->validate($captcha);
@@ -124,7 +119,7 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         $this->subject->setSettings(['captcha' => '1']);
 
         $captcha = new Captcha();
-        $captcha->setValidUntil($this->createFutureDateTime());
+        $captcha->setValidUntil(\DateTime::createFromImmutable($this->now)->modify('+1 second'));
         $captcha->setGivenAnswer('foo');
 
         $result = $this->subject->validate($captcha);
@@ -138,11 +133,11 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         $this->subject->setSettings(['captcha' => '1']);
 
         $captcha = new Captcha();
-        $captcha->setValidUntil($this->createFutureDateTime());
+        $captcha->setValidUntil(\DateTime::createFromImmutable($this->now)->modify('+1 second'));
         $captcha->setGivenAnswer('foo');
 
         $expectedCaptcha = new Captcha();
-        $expectedCaptcha->setValidUntil($this->createFutureDateTime());
+        $expectedCaptcha->setValidUntil(\DateTime::createFromImmutable($this->now)->modify('+1 second'));
         $this->captchaFactory->fillCorrectAnswer($expectedCaptcha);
         $captcha->setGivenAnswer($expectedCaptcha->getCorrectAnswer());
 
@@ -156,10 +151,8 @@ final class CaptchaValidatorTest extends FunctionalTestCase
     {
         $this->subject->setSettings(['captcha' => '1']);
 
-        $nowAsUnixTimestamp = (int)GeneralUtility::makeInstance(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
         $validUntil = new \DateTime();
-        $validUntil->setTimestamp($nowAsUnixTimestamp);
+        $validUntil->setTimestamp($this->now->getTimestamp());
 
         $captcha = new Captcha();
         $captcha->setValidUntil($validUntil);
@@ -180,10 +173,8 @@ final class CaptchaValidatorTest extends FunctionalTestCase
     {
         $this->subject->setSettings(['captcha' => '1']);
 
-        $nowAsUnixTimestamp = (int)GeneralUtility::makeInstance(Context::class)
-            ->getPropertyFromAspect('date', 'timestamp');
         $validUntil = new \DateTime();
-        $validUntil->setTimestamp($nowAsUnixTimestamp - 1);
+        $validUntil->setTimestamp($this->now->getTimestamp() - 1);
 
         $captcha = new Captcha();
         $captcha->setValidUntil($validUntil);
