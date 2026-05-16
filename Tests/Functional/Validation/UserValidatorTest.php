@@ -58,7 +58,15 @@ final class UserValidatorTest extends FunctionalTestCase
 
         $GLOBALS['LANG'] = $this->get(LanguageServiceFactory::class)->create('default');
 
-        $this->subject = new UserValidator();
+        $this->subject = $this->get(UserValidator::class);
+    }
+
+    #[Test]
+    public function isAvailableViaContainer(): void
+    {
+        $subject = $this->get(UserValidator::class);
+
+        self::assertInstanceOf(UserValidator::class, $subject);
     }
 
     /**

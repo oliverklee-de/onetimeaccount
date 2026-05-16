@@ -33,6 +33,14 @@ final class CredentialsGeneratorTest extends FunctionalTestCase
     }
 
     #[Test]
+    public function isAvailableViaContainer(): void
+    {
+        $subject = $this->get(CredentialsGenerator::class);
+
+        self::assertInstanceOf(CredentialsGenerator::class, $subject);
+    }
+
+    #[Test]
     public function isSingleton(): void
     {
         self::assertInstanceOf(SingletonInterface::class, $this->subject);
