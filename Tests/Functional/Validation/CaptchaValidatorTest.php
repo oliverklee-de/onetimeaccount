@@ -43,6 +43,14 @@ final class CaptchaValidatorTest extends FunctionalTestCase
         $this->subject = $this->get(CaptchaValidator::class);
     }
 
+    #[Test]
+    public function isAvailableViaContainer(): void
+    {
+        $subject = $this->get(CaptchaValidator::class);
+
+        self::assertInstanceOf(CaptchaValidator::class, $subject);
+    }
+
     private static function assertCaptchaValidationError(Result $result): void
     {
         self::assertTrue($result->hasErrors());
