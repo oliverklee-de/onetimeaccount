@@ -59,21 +59,17 @@ final class TestingQueryResult implements QueryResultInterface
     }
 
     /**
-     * @return never
-     *
      * @throws \BadMethodCallException
      */
-    public function offsetSet($offset, $value): void
+    public function offsetSet($offset, $value): never
     {
         throw new \BadMethodCallException('Not implemented.', 1714832632);
     }
 
     /**
-     * @return never
-     *
      * @throws \BadMethodCallException
      */
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset): never
     {
         throw new \BadMethodCallException('Not implemented.', 1714832637);
     }
@@ -84,11 +80,9 @@ final class TestingQueryResult implements QueryResultInterface
     }
 
     /**
-     * @return never
-     *
      * @throws \BadMethodCallException
      */
-    public function getQuery(): QueryInterface
+    public function getQuery(): never
     {
         throw new \BadMethodCallException('Not implemented.', 1665661687);
     }
@@ -96,11 +90,9 @@ final class TestingQueryResult implements QueryResultInterface
     /**
      * @param QueryInterface<FrontendUserGroup> $query
      *
-     * @return never
-     *
      * @throws \BadMethodCallException
      */
-    public function setQuery(QueryInterface $query): void
+    public function setQuery(QueryInterface $query): never
     {
         throw new \BadMethodCallException('Not implemented.', 1665661687);
     }
