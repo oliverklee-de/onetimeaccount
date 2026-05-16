@@ -1,21 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$pid of method TYPO3\\\\CMS\\\\Extbase\\\\DomainObject\\\\AbstractDomainObject\\:\\:setPid\\(\\) expects int\\<0, max\\>, int given\\.$#"
-			count: 1
-			path: ../../Classes/Controller/UserWithoutAutologinController.php
-
-		-
-			message: "#^Binary operation \"\\+\" between mixed and 300 results in an error\\.$#"
-			count: 1
-			path: ../../Classes/Service/CaptchaFactory.php
-
-		-
-			message: "#^Parameter \\#1 \\$password of method OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUser\\:\\:setPassword\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: ../../Classes/Service/CredentialsGenerator.php
-
-		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 3
 			path: ../../Tests/Functional/Validation/CaptchaValidatorTest.php

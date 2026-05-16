@@ -28,6 +28,7 @@ class CaptchaFactory
         $captcha = GeneralUtility::makeInstance(Captcha::class);
 
         $nowAsUnixTimestamp = $this->context->getPropertyFromAspect('date', 'timestamp');
+        \assert(\is_int($nowAsUnixTimestamp) && $nowAsUnixTimestamp > 0);
         $validUntil = new \DateTime();
         $validUntil->setTimestamp($nowAsUnixTimestamp + (5 * 60));
         $captcha->setValidUntil($validUntil);
