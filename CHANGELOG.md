@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Fixed
 
+- Add more type checks (#1303)
 - Drop the deprecated `TCEforms` from the Flexforms configuration (#1278)
 
 ## 7.3.1: Bugfixes and dependency updates

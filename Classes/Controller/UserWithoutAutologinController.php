@@ -159,9 +159,11 @@ class UserWithoutAutologinController extends ActionController
 
     private function enrichWithPid(FrontendUser $user): void
     {
-        $pageUid = $this->settings['systemFolderForNewUsers'] ?? null;
-        if (\is_numeric($pageUid)) {
-            $user->setPid((int)$pageUid);
+        $pageUidFromConfiguration = $this->settings['systemFolderForNewUsers'] ?? null;
+        if (\is_numeric($pageUidFromConfiguration)) {
+            $pageUid = (int)$pageUidFromConfiguration;
+            \assert($pageUid > 0);
+            $user->setPid($pageUid);
         }
     }
 

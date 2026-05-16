@@ -58,6 +58,7 @@ class CredentialsGenerator
 
         $password = \bin2hex(\random_bytes(self::PASSWORD_LENGTH / 2));
         $passwordHash = $this->passwordHasher->getHashedPassword($password);
+        \assert(\is_string($passwordHash));
         $user->setPassword($passwordHash);
     }
 
