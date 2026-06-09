@@ -1,5 +1,7 @@
 /*.idea
 /.Build/*
+/.cache
+/.fleet
 /.php-cs-fixer.cache
 /.phpunit.result.cache
 /Documentation-GENERATED-temp/
@@ -11,6 +13,7 @@
 /clover.xml
 /composer.lock
 /coverage
+/generate-documentation.sh
 /nbproject
 /tools
 /var
