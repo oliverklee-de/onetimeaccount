@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" target-language="hu">
+    <header/>
+    <body>
+      <trans-unit id="plugin.withoutAutologin">
+        <source>One-time FE account creator without autologin</source>
+        <target state="translated">Egyszeri FE-fiók létrehozó automatikus bejelentkezés nélkül</target>
+      </trans-unit>
+      <trans-unit id="plugin.fieldsToShow">
+        <source>FE user fields in the form</source>
+        <target state="translated">FE-felhasználó mezői az űrlapon</target>
+      </trans-unit>
+      <trans-unit id="plugin.requiredFields">
+        <source>Required fields</source>
+        <target state="translated">Kötelező mezők</target>
+      </trans-unit>
+      <trans-unit id="plugin.systemFolderForNewUsers">
+        <source>Folder for the new FE user records</source>
+        <target state="translated">Mappa az új FE-felhasználó rekordok számára</target>
+      </trans-unit>
+      <trans-unit id="plugin.groupsForNewUsers">
+        <source>Groups for the new FE users</source>
+        <target state="translated">Csoportok az új FE-felhasználók számára</target>
+      </trans-unit>
+      <trans-unit id="plugin.captcha">
+        <source>Protect the form against spam with a CAPTCHA</source>
+        <target state="translated">Az űrlap védelme a spam ellen CAPTCHA-val</target>
+      </trans-unit>
+      <trans-unit id="plugin.termsAndConditionsPage">
+        <source>Page with the terms &amp; conditions</source>
+        <target state="translated">Az Általános Szerződési Feltételeket tartalmazó oldal</target>
+      </trans-unit>
+      <trans-unit id="userDataLegend">
+        <source>Your personal data</source>
+        <target state="translated">Az Ön személyes adatai</target>
+      </trans-unit>
+      <trans-unit id="company">
+        <source>Company</source>
+        <target state="translated">Cég</target>
+      </trans-unit>
+      <trans-unit id="department">
+        <source>Department</source>
+        <target state="translated">Osztály</target>
+      </trans-unit>
+      <trans-unit id="vatIn">
+        <source>VAT identification number</source>
+        <target state="translated">Adószám</target>
+      </trans-unit>
+      <trans-unit id="gender">
+        <source>Gender</source>
+        <target state="translated">Nem</target>
+      </trans-unit>
+      <trans-unit id="gender.99">
+        <source>(none provided)</source>
+        <target state="translated">(nincs megadva)</target>
+      </trans-unit>
+      <trans-unit id="gender.0">
+        <source>Mr.</source>
+        <target state="translated">Úr</target>
+      </trans-unit>
+      <trans-unit id="gender.1">
+        <source>Mrs.</source>
+        <target state="translated">Asszony</target>
+      </trans-unit>
+      <trans-unit id="gender.2">
+        <source>diverse</source>
+        <target state="translated">egyéb</target>
+      </trans-unit>
+      <trans-unit id="fullSalutation">
+        <source>Salutation and name</source>
+        <target state="translated">Megszólítás és név</target>
+      </trans-unit>
+      <trans-unit id="title">
+        <source>Title</source>
+        <target state="translated">Cím</target>
+      </trans-unit>
+      <trans-unit id="name">
+        <source>Full name</source>
+        <target state="translated">Teljes név</target>
+      </trans-unit>
+      <trans-unit id="firstName">
+        <source>First name</source>
+        <target state="translated">Keresztnév</target>
+      </trans-unit>
+      <trans-unit id="lastName">
+        <source>Last name</source>
+        <target state="translated">Vezetéknév</target>
+      </trans-unit>
+      <trans-unit id="address">
+        <source>Street</source>
+        <target state="translated">Utca</target>
+      </trans-unit>
+      <trans-unit id="zip">
+        <source>ZIP</source>
+        <target state="translated">Irányítószám</target>
+      </trans-unit>
+      <trans-unit id="city">
+        <source>City</source>
+        <target state="translated">Város</target>
+      </trans-unit>
+      <trans-unit id="zone">
+        <source>County/Region</source>
+        <target state="translated">Megye/Tartomány</target>
+      </trans-unit>
+      <trans-unit id="country">
+        <source>Country</source>
+        <target state="translated">Ország</target>
+      </trans-unit>
+      <trans-unit id="email">
+        <source>Email</source>
+        <target state="translated">E-mail</target>
+      </trans-unit>
+      <trans-unit id="www">
+        <source>Website</source>
+        <target state="translated">Weboldal</target>
+      </trans-unit>
+      <trans-unit id="telephone">
+        <source>Phone number</source>
+        <target state="translated">Telefonszám</target>
+      </trans-unit>
+      <trans-unit id="dateOfBirth">
+        <source>Date of birth</source>
+        <target state="translated">Születési dátum</target>
+      </trans-unit>
+      <trans-unit id="membershipNumber">
+        <source>Membership number</source>
+        <target state="translated">Tagsági szám</target>
+      </trans-unit>
+      <trans-unit id="status">
+        <source>Job status</source>
+        <target state="translated">Foglalkoztatási státusz</target>
+      </trans-unit>
+      <trans-unit id="status.1">
+        <source>student</source>
+        <target state="translated">diák</target>
+      </trans-unit>
+      <trans-unit id="status.2">
+        <source>job seeking (full time)</source>
+        <target state="translated">álláskereső (teljes munkaidő)</target>
+      </trans-unit>
+      <trans-unit id="status.3">
+        <source>working</source>
+        <target state="translated">dolgozó</target>
+      </trans-unit>
+      <trans-unit id="status.4">
+        <source>retired</source>
+        <target state="translated">nyugdíjas</target>
+      </trans-unit>
+      <trans-unit id="status.5">
+        <source>job seeking (part time)</source>
+        <target state="translated">álláskereső (részmunkaidő)</target>
+      </trans-unit>
+      <trans-unit id="userGroup">
+        <source>User group</source>
+        <target state="translated">Felhasználói csoport</target>
+      </trans-unit>
+      <trans-unit id="comments">
+        <source>Comments</source>
+        <target state="translated">Megjegyzések</target>
+      </trans-unit>
+      <trans-unit id="termsAcknowledged">
+        <source>Terms &amp; conditions</source>
+        <target state="translated">Általános Szerződési Feltételek</target>
+      </trans-unit>
+      <trans-unit id="termsAcknowledgedLinkTitle">
+        <source>terms &amp; conditions</source>
+        <target state="translated">általános szerződési feltételek</target>
+      </trans-unit>
+      <trans-unit id="consentToTermsAndConditions">
+        <source>I consent to the %1$s.</source>
+        <target state="translated">Elfogadom a(z) %1$s.</target>
+      </trans-unit>
+      <trans-unit id="privacy">
+        <source>Privacy policy agreement</source>
+        <target state="translated">Adatvédelmi nyilatkozat elfogadása</target>
+      </trans-unit>
+      <trans-unit id="privacy.long">
+        <source>
+          I consent that the data I enter will be stored electronically.
+          You can withdraw your consent for the future via email at any time.
+        </source>
+        <target state="translated">
+          Hozzájárulok ahhoz, hogy az általam megadott adatokat elektronikusan tárolják.
+          A hozzájárulást e-mailben bármikor visszavonhatja a jövőre nézve.
+        </target>
+      </trans-unit>
+      <trans-unit id="captcha.question">
+        <source>Are you human?</source>
+        <target state="translated">Ön ember?</target>
+      </trans-unit>
+      <trans-unit id="captcha.answer.yes">
+        <source>Yes, I am human.</source>
+        <target state="translated">Igen, ember vagyok.</target>
+      </trans-unit>
+      <trans-unit id="captcha.answer.no">
+        <source>No, I am not human.</source>
+        <target state="translated">Nem, nem vagyok ember.</target>
+      </trans-unit>
+      <trans-unit id="captcha.validationError">
+        <source>Please confirm that you are human.</source>
+        <target state="translated">Kérjük, erősítse meg, hogy ember.</target>
+      </trans-unit>
+      <trans-unit id="saveAndContinue">
+        <source>Save and continue</source>
+        <target state="translated">Mentés és folytatás</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedAndLoggedIn">
+        <source>The user has been created, and you now are logged in as the new user.</source>
+        <target state="translated">A felhasználó létrehozva, és most már új felhasználóként van bejelentkezve.</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedNotLoggedIn">
+        <source>
+          The user has been created, but the automatic login with the new user was not successful.
+        </source>
+        <target state="translated">
+          A felhasználó létrehozva, de az automatikus bejelentkezés az új felhasználóval nem sikerült.
+        </target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedWithoutLogin">
+        <source>The user has been created.</source>
+        <target state="translated">A felhasználó létrehozva.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
