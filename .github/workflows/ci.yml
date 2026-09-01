@@ -72,10 +72,6 @@ jobs:
           - "php:cs-fixer"
           - "php:rector"
           - "php:sniff"
-          - "php:stan"
-          - "typoscript:lint"
-          - "xliff:lint"
-          - "yaml:lint"
         # For consistency, the PHP version should match the default PHP version in `runTests.sh`.
         php-version:
           - "8.2"
@@ -136,6 +132,18 @@ jobs:
           - typo3-version: "12.4"
             php-version: "8.4"
             composer-dependencies: Max
+          - typo3-version: "13.4"
+            php-version: "8.2"
+            composer-dependencies: Min
+          - typo3-version: "13.4"
+            php-version: "8.2"
+            composer-dependencies: Max
+          - typo3-version: "13.4"
+            php-version: "8.4"
+            composer-dependencies: Min
+          - typo3-version: "13.4"
+            php-version: "8.4"
+            composer-dependencies: Max
   functional-tests:
     name: Functional tests
     runs-on: ubuntu-24.04
@@ -184,6 +192,30 @@ jobs:
             dbms: "mysql"
             composer-dependencies: Max
           - typo3-version: "12.4"
+            php-version: "8.4"
+            dbms: "postgres"
+            composer-dependencies: Max
+          - typo3-version: "13.4"
+            php-version: "8.2"
+            dbms: "sqlite"
+            composer-dependencies: Min
+          - typo3-version: "13.4"
+            php-version: "8.2"
+            dbms: "sqlite"
+            composer-dependencies: Max
+          - typo3-version: "13.4"
+            php-version: "8.4"
+            dbms: "sqlite"
+            composer-dependencies: Min
+          - typo3-version: "13.4"
+            php-version: "8.4"
+            dbms: "sqlite"
+            composer-dependencies: Max
+          - typo3-version: "13.4"
+            php-version: "8.4"
+            dbms: "mysql"
+            composer-dependencies: Max
+          - typo3-version: "13.4"
             php-version: "8.4"
             dbms: "postgres"
             composer-dependencies: Max
