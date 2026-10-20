@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages" target-language="t3">
+    <header/>
+    <body>
+      <trans-unit id="plugin.withoutAutologin">
+        <source>One-time FE account creator without autologin</source>
+        <target>crwdns301624:0crwdne301624:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.fieldsToShow">
+        <source>FE user fields in the form</source>
+        <target>crwdns301626:0crwdne301626:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.requiredFields">
+        <source>Required fields</source>
+        <target>crwdns301628:0crwdne301628:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.systemFolderForNewUsers">
+        <source>Folder for the new FE user records</source>
+        <target>crwdns301630:0crwdne301630:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.groupsForNewUsers">
+        <source>Groups for the new FE users</source>
+        <target>crwdns301632:0crwdne301632:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.captcha">
+        <source>Protect the form against spam with a CAPTCHA</source>
+        <target>crwdns301634:0crwdne301634:0</target>
+      </trans-unit>
+      <trans-unit id="plugin.termsAndConditionsPage">
+        <source>Page with the terms &amp; conditions</source>
+        <target>crwdns336970:0crwdne336970:0</target>
+      </trans-unit>
+      <trans-unit id="userDataLegend">
+        <source>Your personal data</source>
+        <target>crwdns301636:0crwdne301636:0</target>
+      </trans-unit>
+      <trans-unit id="company">
+        <source>Company</source>
+        <target>crwdns301638:0crwdne301638:0</target>
+      </trans-unit>
+      <trans-unit id="department">
+        <source>Department</source>
+        <target>crwdns374432:0crwdne374432:0</target>
+      </trans-unit>
+      <trans-unit id="vatIn">
+        <source>VAT identification number</source>
+        <target>crwdns336976:0crwdne336976:0</target>
+      </trans-unit>
+      <trans-unit id="gender">
+        <source>Gender</source>
+        <target>crwdns301640:0crwdne301640:0</target>
+      </trans-unit>
+      <trans-unit id="gender.99">
+        <source>(none provided)</source>
+        <target>crwdns301642:0crwdne301642:0</target>
+      </trans-unit>
+      <trans-unit id="gender.0">
+        <source>Mr.</source>
+        <target>crwdns301644:0crwdne301644:0</target>
+      </trans-unit>
+      <trans-unit id="gender.1">
+        <source>Mrs.</source>
+        <target>crwdns301646:0crwdne301646:0</target>
+      </trans-unit>
+      <trans-unit id="gender.2">
+        <source>diverse</source>
+        <target>crwdns301648:0crwdne301648:0</target>
+      </trans-unit>
+      <trans-unit id="fullSalutation">
+        <source>Salutation and name</source>
+        <target>crwdns304952:0crwdne304952:0</target>
+      </trans-unit>
+      <trans-unit id="title">
+        <source>Title</source>
+        <target>crwdns374430:0crwdne374430:0</target>
+      </trans-unit>
+      <trans-unit id="name">
+        <source>Full name</source>
+        <target>crwdns301654:0crwdne301654:0</target>
+      </trans-unit>
+      <trans-unit id="firstName">
+        <source>First name</source>
+        <target>crwdns301656:0crwdne301656:0</target>
+      </trans-unit>
+      <trans-unit id="lastName">
+        <source>Last name</source>
+        <target>crwdns301658:0crwdne301658:0</target>
+      </trans-unit>
+      <trans-unit id="address">
+        <source>Street</source>
+        <target>crwdns301660:0crwdne301660:0</target>
+      </trans-unit>
+      <trans-unit id="zip">
+        <source>ZIP</source>
+        <target>crwdns301662:0crwdne301662:0</target>
+      </trans-unit>
+      <trans-unit id="city">
+        <source>City</source>
+        <target>crwdns301664:0crwdne301664:0</target>
+      </trans-unit>
+      <trans-unit id="zone">
+        <source>County/Region</source>
+        <target>crwdns301666:0crwdne301666:0</target>
+      </trans-unit>
+      <trans-unit id="country">
+        <source>Country</source>
+        <target>crwdns301668:0crwdne301668:0</target>
+      </trans-unit>
+      <trans-unit id="email">
+        <source>Email</source>
+        <target>crwdns333194:0crwdne333194:0</target>
+      </trans-unit>
+      <trans-unit id="www">
+        <source>Website</source>
+        <target>crwdns301672:0crwdne301672:0</target>
+      </trans-unit>
+      <trans-unit id="telephone">
+        <source>Phone number</source>
+        <target>crwdns301674:0crwdne301674:0</target>
+      </trans-unit>
+      <trans-unit id="dateOfBirth">
+        <source>Date of birth</source>
+        <target>crwdns301676:0crwdne301676:0</target>
+      </trans-unit>
+      <trans-unit id="membershipNumber">
+        <source>Membership number</source>
+        <target>crwdns392674:0crwdne392674:0</target>
+      </trans-unit>
+      <trans-unit id="status">
+        <source>Job status</source>
+        <target>crwdns301678:0crwdne301678:0</target>
+      </trans-unit>
+      <trans-unit id="status.1">
+        <source>student</source>
+        <target>crwdns301680:0crwdne301680:0</target>
+      </trans-unit>
+      <trans-unit id="status.2">
+        <source>job seeking (full time)</source>
+        <target>crwdns301682:0crwdne301682:0</target>
+      </trans-unit>
+      <trans-unit id="status.3">
+        <source>working</source>
+        <target>crwdns301684:0crwdne301684:0</target>
+      </trans-unit>
+      <trans-unit id="status.4">
+        <source>retired</source>
+        <target>crwdns301686:0crwdne301686:0</target>
+      </trans-unit>
+      <trans-unit id="status.5">
+        <source>job seeking (part time)</source>
+        <target>crwdns301688:0crwdne301688:0</target>
+      </trans-unit>
+      <trans-unit id="userGroup">
+        <source>User group</source>
+        <target>crwdns301690:0crwdne301690:0</target>
+      </trans-unit>
+      <trans-unit id="comments">
+        <source>Comments</source>
+        <target>crwdns301692:0crwdne301692:0</target>
+      </trans-unit>
+      <trans-unit id="termsAcknowledged">
+        <source>Terms &amp; conditions</source>
+        <target>crwdns336966:0crwdne336966:0</target>
+      </trans-unit>
+      <trans-unit id="termsAcknowledgedLinkTitle">
+        <source>terms &amp; conditions</source>
+        <target>crwdns336972:0crwdne336972:0</target>
+      </trans-unit>
+      <trans-unit id="consentToTermsAndConditions">
+        <source>I consent to the %1$s.</source>
+        <target>crwdns336974:0%1$scrwdne336974:0</target>
+      </trans-unit>
+      <trans-unit id="privacy">
+        <source>Privacy policy agreement</source>
+        <target>crwdns301694:0crwdne301694:0</target>
+      </trans-unit>
+      <trans-unit id="privacy.long">
+        <source>
+          I consent that the data I enter will be stored electronically.
+          You can withdraw your consent for the future via email at any time.
+        </source>
+        <target>crwdns384168:0crwdne384168:0</target>
+      </trans-unit>
+      <trans-unit id="captcha.question">
+        <source>Are you human?</source>
+        <target>crwdns301698:0crwdne301698:0</target>
+      </trans-unit>
+      <trans-unit id="captcha.answer.yes">
+        <source>Yes, I am human.</source>
+        <target>crwdns301700:0crwdne301700:0</target>
+      </trans-unit>
+      <trans-unit id="captcha.answer.no">
+        <source>No, I am not human.</source>
+        <target>crwdns301702:0crwdne301702:0</target>
+      </trans-unit>
+      <trans-unit id="captcha.validationError">
+        <source>Please confirm that you are human.</source>
+        <target>crwdns301704:0crwdne301704:0</target>
+      </trans-unit>
+      <trans-unit id="saveAndContinue">
+        <source>Save and continue</source>
+        <target>crwdns301706:0crwdne301706:0</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedAndLoggedIn">
+        <source>The user has been created, and you now are logged in as the new user.</source>
+        <target>crwdns301708:0crwdne301708:0</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedNotLoggedIn">
+        <source>
+          The user has been created, but the automatic login with the new user was not successful.
+        </source>
+        <target>crwdns384170:0crwdne384170:0</target>
+      </trans-unit>
+      <trans-unit id="alert.userCreatedWithoutLogin">
+        <source>The user has been created.</source>
+        <target>crwdns301712:0crwdne301712:0</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
