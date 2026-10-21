@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Changed
 
+- Allow oelib 7.0 (#1352)
+
 ### Removed
 
 ### Fixed
