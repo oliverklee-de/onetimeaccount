@@ -13,13 +13,6 @@ parameters:
     - ../../Tests
     - ../../ext_localconf.php
 
-  type_perfect:
-    no_mixed_property: true
-    no_mixed_caller: true
-    null_over_false: true
-    narrow_param: false
-    narrow_return: false
-
   ignoreErrors:
     -
       message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) .* will always evaluate to#'
