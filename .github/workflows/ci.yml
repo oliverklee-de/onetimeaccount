@@ -45,8 +45,8 @@ jobs:
           - typo3-version: "12.4"
             php-version: "8.1"
             composer-dependencies: Max
-          - typo3-version: "12.4"
-            php-version: "8.4"
+          - typo3-version: "13.4"
+            php-version: "8.5"
             composer-dependencies: Max
   code-quality:
     name: Code quality checks
@@ -149,10 +149,10 @@ jobs:
             php-version: "8.2"
             composer-dependencies: Max
           - typo3-version: "13.4"
-            php-version: "8.4"
+            php-version: "8.5"
             composer-dependencies: Min
           - typo3-version: "13.4"
-            php-version: "8.4"
+            php-version: "8.5"
             composer-dependencies: Max
   functional-tests:
     name: Functional tests
@@ -214,19 +214,19 @@ jobs:
             dbms: "sqlite"
             composer-dependencies: Max
           - typo3-version: "13.4"
-            php-version: "8.4"
+            php-version: "8.5"
             dbms: "sqlite"
             composer-dependencies: Min
           - typo3-version: "13.4"
-            php-version: "8.4"
+            php-version: "8.5"
             dbms: "sqlite"
             composer-dependencies: Max
           - typo3-version: "13.4"
-            php-version: "8.4"
+            php-version: "8.5"
             dbms: "mysql"
             composer-dependencies: Max
           - typo3-version: "13.4"
-            php-version: "8.4"
+            php-version: "8.5"
             dbms: "postgres"
             composer-dependencies: Max
   documentation:
