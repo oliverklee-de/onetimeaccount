@@ -14,6 +14,8 @@ parameters:
     - ../../ext_localconf.php
 
   ignoreErrors:
+    - identifiers:
+        - method.internalClass
     -
-      message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) .* will always evaluate to#'
+      identifier: staticMethod.alreadyNarrowedType
       path: '../../Tests/'

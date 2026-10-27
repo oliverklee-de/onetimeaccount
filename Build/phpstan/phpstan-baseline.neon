@@ -1,6 +1,103 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$query \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\) of method OliverKlee\\\\Onetimeaccount\\\\Tests\\\\Unit\\\\Controller\\\\Fixtures\\\\TestingQueryResult\\:\\:setQuery\\(\\) should be compatible with parameter \\$query \\(TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryInterface\\<object\\>\\) of method TYPO3\\\\CMS\\\\Extbase\\\\Persistence\\\\QueryResultInterface\\<OliverKlee\\\\FeUserExtraFields\\\\Domain\\\\Model\\\\FrontendUserGroup\\>\\:\\:setQuery\\(\\)$#"
+			rawMessage: Coalesce operator ?? is unnecessary because the left side is always set and the right side is null.
+			identifier: nullCoalesce.unnecessary
+			count: 1
+			path: ../../Classes/Controller/UserWithoutAutologinController.php
+
+		-
+			rawMessage: 'Parameter #1 $validator of method TYPO3\CMS\Extbase\Validation\Validator\AbstractCompositeValidator::addValidator() expects TYPO3\CMS\Extbase\Validation\Validator\ValidatorInterface, TYPO3\CMS\Extbase\Validation\Validator\ValidatorInterface|null given.'
+			identifier: argument.type
+			count: 2
+			path: ../../Classes/Controller/UserWithoutAutologinController.php
+
+		-
+			rawMessage: Casting to int something that's already int.
+			identifier: cast.useless
+			count: 2
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: Class OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult @implements tag contains incompatible type iterable<OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup>&TYPO3\CMS\Extbase\Persistence\QueryResultInterface.
+			identifier: generics.notCompatible
 			count: 1
 			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: 'Class OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult implements generic interface TYPO3\CMS\Extbase\Persistence\QueryResultInterface but does not specify its types: TKey, TValue'
+			identifier: missingType.generics
+			count: 1
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: 'Method OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult::current() should return OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup but returns OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup|null.'
+			identifier: return.type
+			count: 1
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: 'Method OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult::getFirst() should return OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup but returns OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup|null.'
+			identifier: return.type
+			count: 1
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: 'Parameter #1 $query (TYPO3\CMS\Extbase\Persistence\QueryInterface<OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup>) of method OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult::setQuery() should be compatible with parameter $query (TYPO3\CMS\Extbase\Persistence\QueryInterface<object>) of method TYPO3\CMS\Extbase\Persistence\QueryResultInterface<int,object>::setQuery()'
+			identifier: method.childParameterType
+			count: 1
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: 'Parameter #1 $value of method TYPO3\CMS\Extbase\Persistence\ObjectStorage<OliverKlee\FeUserExtraFields\Domain\Model\FrontendUserGroup>::offsetExists() expects string, int given.'
+			identifier: argument.type
+			count: 1
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: 'Return type (string) of method OliverKlee\Onetimeaccount\Tests\Unit\Controller\Fixtures\TestingQueryResult::key() should be compatible with return type (int) of method Iterator<int,object>::key()'
+			identifier: method.childReturnType
+			count: 2
+			path: ../../Tests/Unit/Controller/Fixtures/TestingQueryResult.php
+
+		-
+			rawMessage: Access to constant on internal class TYPO3\CMS\Core\Http\HtmlResponse.
+			identifier: classConstant.internalClass
+			count: 4
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
+
+		-
+			rawMessage: Access to constant on internal class TYPO3\CMS\Core\Http\RedirectResponse.
+			identifier: classConstant.internalClass
+			count: 2
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
+
+		-
+			rawMessage: 'Call to internal method TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject::_setProperty() from outside its root namespace TYPO3.'
+			identifier: method.internal
+			count: 1
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
+
+		-
+			rawMessage: 'Call to internal static method TYPO3\CMS\Core\Utility\GeneralUtility::flushInternalRuntimeCaches() from outside its root namespace TYPO3.'
+			identifier: staticMethod.internal
+			count: 1
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
+
+		-
+			rawMessage: 'Call to internal static method TYPO3\CMS\Core\Utility\GeneralUtility::setIndpEnv() from outside its root namespace TYPO3.'
+			identifier: staticMethod.internal
+			count: 2
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
+
+		-
+			rawMessage: Instantiation of internal class TYPO3\CMS\Extbase\Mvc\Controller\Arguments.
+			identifier: new.internalClass
+			count: 1
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
+
+		-
+			rawMessage: Property $controllerArguments references internal class TYPO3\CMS\Extbase\Mvc\Controller\Arguments in its type.
+			identifier: property.internalClass
+			count: 1
+			path: ../../Tests/Unit/Controller/UserWithoutAutologinControllerTest.php
