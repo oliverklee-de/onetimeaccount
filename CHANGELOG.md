@@ -7,18 +7,24 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 ### Added
 
-- Add support for PHP 8.5 (#1356)
-- Add support for TYPO3 13LTS (#1355)
-
 ### Deprecated
 
 ### Changed
 
-- Allow oelib 7.0 (#1352)
-
 ### Removed
 
 ### Fixed
+
+## 8.1.0: Add support for TYPO3 13LTS and PHP 8.5
+
+### Added
+
+- Add support for PHP 8.5 (#1356)
+- Add support for TYPO3 13LTS (#1355)
+
+### Changed
+
+- Allow oelib 7.0 (#1352)
 
 ## 8.0.0: Drop support for TYPO3 11LTS and PHP < 8.1
 

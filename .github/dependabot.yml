@@ -6,7 +6,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    milestone: 19
+    milestone: 31
 
   - package-ecosystem: "composer"
     directory: "/"
@@ -26,4 +26,4 @@ updates:
       - dependency-name: "typo3/testing-framework"
         versions: [ ">= 9.0.0" ]
     versioning-strategy: "increase"
-    milestone: 19
+    milestone: 31
