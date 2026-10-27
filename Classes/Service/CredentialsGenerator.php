@@ -76,7 +76,7 @@ class CredentialsGenerator
             $username = $email . '_' . $suffix;
             $userByEmail = $this->userRepository->findOneByUsername($username);
             $suffix++;
-        } while ($userByEmail !== null);
+        } while ($userByEmail instanceof FrontendUser);
 
         $user->setUsername($username);
     }
