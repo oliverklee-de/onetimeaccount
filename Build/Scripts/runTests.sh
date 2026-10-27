@@ -277,12 +277,11 @@ Options:
             - 15    maintained until 2027-11-11
             - 16    maintained until 2028-11-09
 
-    -t <11.5|12.4|13.4|14.3>
+    -t <12.4|13.4|14.3>
         Only with -s composerUpdateMin|composerUpdateMax
         Specifies the TYPO3 CORE Version to be used
-            - 11.5: use TYPO3 v11
-            - 12.4: use TYPO3 v12 (default)
-            - 13.4: use TYPO3 v13
+            - 12.4: use TYPO3 v12
+            - 13.4: use TYPO3 v13 (default)
             - 14.3: use TYPO3 v14
 
     -p <7.4|8.0|8.1|8.2|8.3|8.4|8.5>
@@ -374,7 +373,7 @@ ROOT_DIR="${PWD}"
 
 # Option defaults
 TEST_SUITE="unit"
-CORE_VERSION="12.4"
+CORE_VERSION="13.4"
 DBMS="sqlite"
 DBMS_VERSION=""
 PHP_VERSION="8.2"
@@ -433,7 +432,7 @@ while getopts "a:b:s:d:i:p:t:xy:o:nhu" OPT; do
             ;;
         t)
             CORE_VERSION=${OPTARG}
-            if ! [[ ${CORE_VERSION} =~ ^(11.5|12.4|13.4|14.3)$ ]]; then
+            if ! [[ ${CORE_VERSION} =~ ^(12.4|13.4|14.3)$ ]]; then
                 INVALID_OPTIONS+=("-t ${OPTARG}")
             fi
             ;;
