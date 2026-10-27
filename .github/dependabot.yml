@@ -15,14 +15,22 @@ updates:
     allow:
       - dependency-type: "development"
     ignore:
+      - dependency-name: "helmich/typo3-typoscript-lint"
+      - dependency-name: "phpstan/phpstan"
+      - dependency-name: "phpstan/phpstan-phpunit"
+      - dependency-name: "phpstan/phpstan-strict-rules"
       - dependency-name: "phpunit/phpcov"
         versions: [ ">= 10.0" ]
       - dependency-name: "phpunit/phpunit"
         versions: [ ">= 11.0" ]
       - dependency-name: "psr/log"
+      - dependency-name: "rector/rector"
+      - dependency-name: "saschaegerer/phpstan-typo3"
+      - dependency-name: "ssch/*"
       - dependency-name: "symfony/console"
       - dependency-name: "symfony/translation"
       - dependency-name: "symfony/yaml"
+      - dependency-name: "typo3/cms-fluid-styled-content"
       - dependency-name: "typo3/testing-framework"
         versions: [ ">= 9.0.0" ]
     versioning-strategy: "increase"
